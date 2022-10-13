@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Hexo 多端同步</title>
+    <link href="/2022/10/13/Hexo-%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/"/>
+    <url>/2022/10/13/Hexo-%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/</url>
+    
+    <content type="html"><![CDATA[<img src="/2022/10/13/Hexo-%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/weimei036.jpeg" class="" title="图片来源zhuoku.com"><h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><ul><li>上一篇博客介绍了基于 Hexo 的搭建，但这只能在一台电脑生效。</li><li>Hexo 只会上传 public 文件夹的内容，源码不会部署。这意味着换一台电脑需要重新弄一份源码。</li><li>网上的方案基本上是在原 Repo 开分支，但这样你的博客源码全部暴露在外，不安全。</li></ul><h1 id="二、步骤"><a href="#二、步骤" class="headerlink" title="二、步骤"></a>二、步骤</h1><ul><li>本文采用在 Github 创建一个私有库来存放源码，新创建库 HexoSource</li><li>由于 Hexo 在 init 的时候已经为我们写好 .gitignore 文件，我们不需要再花时间弄一份。</li><li>因此，我们只需要在 hexo-blog 中 git init、git add、git commit、git push 到 HexoSource 即可。</li><li>另一台电脑上，直接 git clone、cd HexoSource、npm install 即可。</li><li>前提是已经安装了 Hexo。<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">npm install hexo-<span class="hljs-keyword">cli</span> -g<br></code></pre></td></tr></table></figure></li></ul><h1 id="三、说明"><a href="#三、说明" class="headerlink" title="三、说明"></a>三、说明</h1><ul><li>两台电脑都需要在 Github 的 Settings 里配置 SSH key，是个程序员都会，这里就不多讲了。</li></ul><h1 id="四、结束"><a href="#四、结束" class="headerlink" title="四、结束"></a>四、结束</h1><ul><li>是不是比较简单呢？</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>[object Object]</tag>
+      
+      <tag>程序人生</tag>
+      
+      <tag>Hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2022/10/13/hello-world/"/>
     <url>/2022/10/13/hello-world/</url>
