@@ -288,34 +288,66 @@
       
 
 <div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">测试文章</h1>
+    <div class="row nomargin-x">
+        <div class="side-col d-none d-lg-block col-lg-2">
             
-            
-              <div class="markdown-body">
-                
-                <p>这是一篇测试的文章，只有一行字和一张图片</p>
+
+        </div>
+
+        <div class="col-lg-8 nopadding-x-md">
+            <div class="container nopadding-x-md" id="board-ctn">
+                <div id="board">
+                    <article class="post-content mx-auto">
+                        <!-- SEO header -->
+                        <h1 style="display: none">测试文章</h1>
+                        
+                        
+                        <div class="markdown-body">
+                            
+                            <p>这是一篇测试的文章，只有一行字和一张图片</p>
 <img src="/2022/10/11/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.jpeg" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
 
 <p><img src="/test.jpeg" srcset="/img/loading.gif" lazyload alt="图片引用方法二"></p>
 <p><img src="/test.jpeg" srcset="/img/loading.gif" lazyload alt="图片引用方法二"></p>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
+                            
+                        </div>
+                        
+                        <hr/>
+
+                        
+                        <!-- 添加打赏功能 -->
+<div class="post-donate" style="text-align: center">
+    <div id="donate_board" class="donate_bar center">
+        <span class="donate_txt" style="text-align: center">
+		   坚持做分享！如果感觉棒，请赏个铜板！
+        </span>
+        <input id="btn_donate"
+               type="button"
+               style="background-color: red; color: white; border: none; height=38; width=100"
+               value="打赏"/>
+        <br>
+    </div>
+    <div id="donate_guide" class="donate_bar center" style="display: none; margin-top: 30px">
+        <!-- 支付宝打赏图案 -->
+        <img src="/img/donate_alipay.png" srcset="/img/loading.gif" lazyload width="200" height="200" alt="支付宝打赏">
+        <!-- 微信打赏图案 -->
+        <img src="/img/donate_wechat.png" srcset="/img/loading.gif" lazyload width="200" height="200" alt="微信打赏" style="margin-left: 33px">
+    </div>
+    <script type="text/javascript">
+      document.getElementById('btn_donate').onclick = function () {
+        let qr = document.getElementById("donate_guide");
+        "none" === qr.style.display ? qr.style.display = "block" : qr.style.display = "none"
+      }
+    </script>
+</div>
+<!-- 添加打赏功能 -->
+
+                        
+                        <hr/>
+
+                        <div>
+                            <div class="post-metas my-3">
   
   
     <div class="post-meta">
@@ -332,7 +364,7 @@
 </div>
 
 
-              
+                            
   
 
   <div class="license-box my-3">
@@ -377,33 +409,33 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/10/12/%E4%BD%BF%E7%94%A8-Github-Hexo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="使用 Github + Hexo 搭建个人博客">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用 Github + Hexo 搭建个人博客</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/10/11/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+                            
+                            <div class="post-prevnext my-3">
+                                <article class="post-prev col-6">
+                                    
+                                    
+                                    <a href="/2022/10/12/%E4%BD%BF%E7%94%A8-Github-Hexo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="使用 Github + Hexo 搭建个人博客">
+                                        <i class="iconfont icon-arrowleft"></i>
+                                        <span class="hidden-mobile">使用 Github + Hexo 搭建个人博客</span>
+                                        <span class="visible-mobile">上一篇</span>
+                                    </a>
+                                    
+                                </article>
+                                <article class="post-next col-6">
+                                    
+                                    
+                                    <a href="/2022/10/11/hello-world/" title="Hello World">
+                                        <span class="hidden-mobile">Hello World</span>
+                                        <span class="visible-mobile">下一篇</span>
+                                        <i class="iconfont icon-arrowright"></i>
+                                    </a>
+                                    
+                                </article>
+                            </div>
+                            
+                        </div>
 
-            
+                        
   <article id="comments" lazyload>
     
   <div id="valine"></div>
@@ -432,13 +464,13 @@
   </article>
 
 
-          </article>
+                    </article>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
+        <div class="side-col d-none d-lg-block col-lg-2">
+            
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
@@ -450,8 +482,8 @@
   </aside>
 
 
+        </div>
     </div>
-  </div>
 </div>
 
 

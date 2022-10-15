@@ -284,23 +284,23 @@
       
 
 <div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">使用 Github + Hexo 搭建个人博客</h1>
+    <div class="row nomargin-x">
+        <div class="side-col d-none d-lg-block col-lg-2">
             
-            
-              <div class="markdown-body">
-                
-                <p><img src="/img/bing06.jpeg" srcset="/img/loading.gif" lazyload></p>
+
+        </div>
+
+        <div class="col-lg-8 nopadding-x-md">
+            <div class="container nopadding-x-md" id="board-ctn">
+                <div id="board">
+                    <article class="post-content mx-auto">
+                        <!-- SEO header -->
+                        <h1 style="display: none">使用 Github + Hexo 搭建个人博客</h1>
+                        
+                        
+                        <div class="markdown-body">
+                            
+                            <p><img src="/img/bing06.jpeg" srcset="/img/loading.gif" lazyload></p>
 <h1 id="〇、说明"><a href="#〇、说明" class="headerlink" title="〇、说明"></a>〇、说明</h1><ul>
 <li>本次搭建是以 Mac 平台为准，Windows 或其他平台的命令会有一些细微的不同。</li>
 </ul>
@@ -427,12 +427,44 @@
 https://blog.csdn.net/yaorongke/article/details/119089190
 </code></pre>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
+                            
+                        </div>
+                        
+                        <hr/>
+
+                        
+                        <!-- 添加打赏功能 -->
+<div class="post-donate" style="text-align: center">
+    <div id="donate_board" class="donate_bar center">
+        <span class="donate_txt" style="text-align: center">
+		   坚持做分享！如果感觉棒，请赏个铜板！
+        </span>
+        <input id="btn_donate"
+               type="button"
+               style="background-color: red; color: white; border: none; height=38; width=100"
+               value="打赏"/>
+        <br>
+    </div>
+    <div id="donate_guide" class="donate_bar center" style="display: none; margin-top: 30px">
+        <!-- 支付宝打赏图案 -->
+        <img src="/img/donate_alipay.png" srcset="/img/loading.gif" lazyload width="200" height="200" alt="支付宝打赏">
+        <!-- 微信打赏图案 -->
+        <img src="/img/donate_wechat.png" srcset="/img/loading.gif" lazyload width="200" height="200" alt="微信打赏" style="margin-left: 33px">
+    </div>
+    <script type="text/javascript">
+      document.getElementById('btn_donate').onclick = function () {
+        let qr = document.getElementById("donate_guide");
+        "none" === qr.style.display ? qr.style.display = "block" : qr.style.display = "none"
+      }
+    </script>
+</div>
+<!-- 添加打赏功能 -->
+
+                        
+                        <hr/>
+
+                        <div>
+                            <div class="post-metas my-3">
   
     <div class="post-meta mr-3 d-flex align-items-center">
       <i class="iconfont icon-category"></i>
@@ -466,7 +498,7 @@ https://blog.csdn.net/yaorongke/article/details/119089190
 </div>
 
 
-              
+                            
   
 
   <div class="license-box my-3">
@@ -511,33 +543,33 @@ https://blog.csdn.net/yaorongke/article/details/119089190
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/10/13/Hexo-%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/" title="Hexo 多端同步">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hexo 多端同步</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/10/11/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" title="测试文章">
-                        <span class="hidden-mobile">测试文章</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+                            
+                            <div class="post-prevnext my-3">
+                                <article class="post-prev col-6">
+                                    
+                                    
+                                    <a href="/2022/10/13/Hexo-%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/" title="Hexo 多端同步">
+                                        <i class="iconfont icon-arrowleft"></i>
+                                        <span class="hidden-mobile">Hexo 多端同步</span>
+                                        <span class="visible-mobile">上一篇</span>
+                                    </a>
+                                    
+                                </article>
+                                <article class="post-next col-6">
+                                    
+                                    
+                                    <a href="/2022/10/11/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" title="测试文章">
+                                        <span class="hidden-mobile">测试文章</span>
+                                        <span class="visible-mobile">下一篇</span>
+                                        <i class="iconfont icon-arrowright"></i>
+                                    </a>
+                                    
+                                </article>
+                            </div>
+                            
+                        </div>
 
-            
+                        
   <article id="comments" lazyload>
     
   <div id="valine"></div>
@@ -566,13 +598,13 @@ https://blog.csdn.net/yaorongke/article/details/119089190
   </article>
 
 
-          </article>
+                    </article>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
+        <div class="side-col d-none d-lg-block col-lg-2">
+            
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
@@ -584,8 +616,8 @@ https://blog.csdn.net/yaorongke/article/details/119089190
   </aside>
 
 
+        </div>
     </div>
-  </div>
 </div>
 
 
