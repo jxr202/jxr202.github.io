@@ -16,28 +16,24 @@
   <meta name="author" content="Jiang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、属性预览 下面展示的是本文的开头部分：  12345678910111213---title: Hexo 文章标签等属性简介index_img: &#x2F;img&#x2F;daocao01.jpegbanner_img: &#x2F;img&#x2F;daocao01.jpegdate: 2022-10-14 12:30:00tags: [Hexo, Blog, 原创, 程序人生, 逆天改命]categories:- [Hex">
+    <meta name="description" content="一、背景 在做新功能开发的过程中，往往会涉及多次 commit。 通常来说，在发布版本时，多次提交会直接 push 到主分支。 但在某些特殊情况，限制我们只能做一次提交，这时候需要进行 commit 合并了。  二、找出要合并的提交记录 可以通过 git log 命令找出最近的提交记录。 使用 IDEA 或 Android Studio  开发的话，直接就能在底部的工具栏中可以看到提交记录。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 文章标签等属性简介">
-<meta property="og:url" content="http://jxr202.github.io/2022/10/14/hexo/Hexo%20%E6%96%87%E7%AB%A0%E6%A0%87%E7%AD%BE%E5%92%8C%E7%B1%BB%E5%88%AB%E7%AD%89%E5%B1%9E%E6%80%A7/index.html">
+<meta property="og:title" content="Git 将多条commit合并为一条">
+<meta property="og:url" content="http://jxr202.github.io/2022/10/17/git/Git-%E5%B0%86%E5%A4%9A%E6%9D%A1commit%E5%90%88%E5%B9%B6%E4%B8%BA%E4%B8%80%E6%9D%A1/index.html">
 <meta property="og:site_name" content="先先的个人博客">
-<meta property="og:description" content="一、属性预览 下面展示的是本文的开头部分：  12345678910111213---title: Hexo 文章标签等属性简介index_img: &#x2F;img&#x2F;daocao01.jpegbanner_img: &#x2F;img&#x2F;daocao01.jpegdate: 2022-10-14 12:30:00tags: [Hexo, Blog, 原创, 程序人生, 逆天改命]categories:- [Hex">
+<meta property="og:description" content="一、背景 在做新功能开发的过程中，往往会涉及多次 commit。 通常来说，在发布版本时，多次提交会直接 push 到主分支。 但在某些特殊情况，限制我们只能做一次提交，这时候需要进行 commit 合并了。  二、找出要合并的提交记录 可以通过 git log 命令找出最近的提交记录。 使用 IDEA 或 Android Studio  开发的话，直接就能在底部的工具栏中可以看到提交记录。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://jxr202.github.io/img/daocao01.jpeg">
-<meta property="article:published_time" content="2022-10-14T02:58:01.000Z">
-<meta property="article:modified_time" content="2022-10-14T06:14:28.989Z">
+<meta property="og:image" content="http://jxr202.github.io/img/git/git_bg_02.jpeg">
+<meta property="article:published_time" content="2022-10-17T03:42:58.000Z">
+<meta property="article:modified_time" content="2022-10-17T11:30:06.858Z">
 <meta property="article:author" content="Jiang">
-<meta property="article:tag" content="原创">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="Blog">
-<meta property="article:tag" content="程序人生">
-<meta property="article:tag" content="逆天改命">
+<meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://jxr202.github.io/img/daocao01.jpeg">
+<meta name="twitter:image" content="http://jxr202.github.io/img/git/git_bg_02.jpeg">
   
   
   
-  <title>Hexo 文章标签等属性简介 - 先先的个人博客</title>
+  <title>Git 将多条commit合并为一条 - 先先的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,13 +209,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/daocao01.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/git/git_bg_02.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hexo 文章标签等属性简介"></span>
+            <span id="subtitle" data-typed-text="Git 将多条commit合并为一条"></span>
           
         </div>
 
@@ -230,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-14 10:58" pubdate>
-          2022年10月14日 上午
+        <time datetime="2022-10-17 11:42" pubdate>
+          2022年10月17日 中午
         </time>
       </span>
     
@@ -242,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          545 字
         
       </span>
     
@@ -253,7 +249,7 @@
         
         
         
-          11 分钟
+          5 分钟
         
       </span>
     
@@ -299,71 +295,53 @@
                 <div id="board">
                     <article class="post-content mx-auto">
                         <!-- SEO header -->
-                        <h1 style="display: none">Hexo 文章标签等属性简介</h1>
+                        <h1 style="display: none">Git 将多条commit合并为一条</h1>
                         
                         
                         <div class="markdown-body">
                             
-                            <p><img src="/img/daocao01.jpeg" srcset="/img/loading.gif" lazyload></p>
-<h1 id="一、属性预览"><a href="#一、属性预览" class="headerlink" title="一、属性预览"></a>一、属性预览</h1><ul>
-<li>下面展示的是本文的开头部分：</li>
+                            <p><img src="/img/git/git_bg_02.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><ul>
+<li>在做新功能开发的过程中，往往会涉及多次 <code>commit</code>。</li>
+<li>通常来说，在发布版本时，多次提交会直接 <code>push</code> 到主分支。</li>
+<li>但在某些特殊情况，限制我们只能做一次提交，这时候需要进行 <code>commit</code> 合并了。</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">文章标签等属性简介</span><br><span class="hljs-attr">index_img:</span> <span class="hljs-string">/img/daocao01.jpeg</span><br><span class="hljs-attr">banner_img:</span> <span class="hljs-string">/img/daocao01.jpeg</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2022-10-14 12:30:00</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Blog</span>, <span class="hljs-string">原创</span>, <span class="hljs-string">程序人生</span>, <span class="hljs-string">逆天改命</span>]<br><span class="hljs-attr">categories:</span><br><span class="hljs-bullet">-</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Blog</span>]<br><span class="hljs-bullet">-</span> [<span class="hljs-string">逆天改命</span>]<br><span class="hljs-bullet">-</span> [<span class="hljs-string">程序人生</span>]<br><span class="hljs-bullet">-</span> [<span class="hljs-string">原创</span>]<br><span class="hljs-meta">---</span><br><span class="hljs-string">以下是文章内容</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="二、图片"><a href="#二、图片" class="headerlink" title="二、图片"></a>二、图片</h1><h3 id="1、图片路径说明"><a href="#1、图片路径说明" class="headerlink" title="1、图片路径说明"></a>1、图片路径说明</h3><ul>
-<li>通常来说，<code>/img/xxx.jpg</code> 命名的图片位置对应的是 <code>fluid/source/img/xxx.jpg</code> 路径。但我们放在根目录的 <code>source</code> 下也行。</li>
-<li>本文是将 <code>daocao01.jpeg</code> 放在了根目录下的 <code>source/img/</code> 目录中。</li>
+<h1 id="二、找出要合并的提交记录"><a href="#二、找出要合并的提交记录" class="headerlink" title="二、找出要合并的提交记录"></a>二、找出要合并的提交记录</h1><ul>
+<li>可以通过 <code>git log</code> 命令找出最近的提交记录。</li>
+<li>使用 <code>IDEA</code> 或 <code>Android Studio </code> 开发的话，直接就能在底部的工具栏中可以看到提交记录。</li>
 </ul>
-<h3 id="2、文章首页图片"><a href="#2、文章首页图片" class="headerlink" title="2、文章首页图片"></a>2、文章首页图片</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">index_img: <span class="hljs-regexp">/img/</span>daocao01.jpeg<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><code>index_img</code> 属性标识着文章在首页列表展示时，所显示的图片，这个很好理解。</li>
+<p><img src="/img/git/git_01.jpg" srcset="/img/loading.gif" lazyload></p>
+<h1 id="三、合并提交"><a href="#三、合并提交" class="headerlink" title="三、合并提交"></a>三、合并提交</h1><ul>
+<li>如上图所示，要合并最近的 <code>4</code> 条记录，可以有 <code>2</code> 种方法：</li>
 </ul>
-<h3 id="3、文章页面背景大图"><a href="#3、文章页面背景大图" class="headerlink" title="3、文章页面背景大图"></a>3、文章页面背景大图</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">banner_img: <span class="hljs-regexp">/img/</span>daocao01.jpeg<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><code>banner_img</code> 每篇文章开头部分都有一篇背景图，默认是海灯的那张，可以替换。</li>
-</ul>
-<h3 id="4、文章内图片引用"><a href="#4、文章内图片引用" class="headerlink" title="4、文章内图片引用"></a>4、文章内图片引用</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">![图片说明](<span class="hljs-regexp">/img/</span>daocao01.jpeg)<br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">git</span> rebase -i HEAD~<span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>使用 <code>![](/img/xxx.jpg)</code> 来引用到文章内部，其中的中括号内可以写图片的一些说明。</li>
+<li>或者：</li>
 </ul>
-<h1 id="三、标签"><a href="#三、标签" class="headerlink" title="三、标签"></a>三、标签</h1><ul>
-<li>标签 <code>tags</code> 这个属性不存在子标签，故没有顺序。下面两种方式都会生成三个不同类型的标签。</li>
-<li>方式一：</li>
-</ul>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">tags:</span> [Hexo, Blog, 原创]<br></code></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">git rebase -<span class="hljs-selector-tag">i</span> fc2bc000<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>方式二：</li>
+<li>其中的 <code>HEAD~4</code> 表示最近的4次提交，<code>fc2bc000</code> 为4次提交的父记录，即倒数第5次提交。</li>
 </ul>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">tags:</span><br>- Hexo<br>- Blog<br>- 原创<br></code></pre></td></tr></table></figure>
-
-<h1 id="四、类别"><a href="#四、类别" class="headerlink" title="四、类别"></a>四、类别</h1><ul>
-<li>类别 <code>categories</code> 这个属性和标签不一样，可以有子类别。以下方式会使得 <code>B</code> 成为 <code>A</code> 的子类别，而不是平级。</li>
-</ul>
-<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ldif"><span class="hljs-attribute">categories</span>:<br><span class="hljs-literal">-</span> A<br><span class="hljs-literal">-</span> B<br></code></pre></td></tr></table></figure>
-
+<p><img src="/img/git/git_02.jpg" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>我们可以使用如下方式来产生四个不同的类别。其产生了三个平级的类别，其中的 <code>Blog</code> 属于 <code>Hexo</code> 的子类。</li>
+<li>在弹出的界面，按 <code>i</code> 进入编辑模式，并将后面3条记录的 <code>pick</code> 改为 <code>s</code> 或 <code>squash</code>。</li>
+<li>按 <code>ESC</code> 退出编辑模式，再输入 <code>:wq</code> 保存修改记录并退出。</li>
 </ul>
-<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">categories</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">[Hexo, Blog]</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">[逆天改命]</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">[程序人生]</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="五、摘要"><a href="#五、摘要" class="headerlink" title="五、摘要"></a>五、摘要</h1><h3 id="1、指定摘要"><a href="#1、指定摘要" class="headerlink" title="1、指定摘要"></a>1、指定摘要</h3><ul>
-<li>在文章头部，可以通过 <code>excerpt</code> 来指定摘要。摘要的主要作用是显示在主页的文章列表中。</li>
+<p><img src="/img/git/git_03.jpg" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>然后弹出合并后的 <code>commit</code> 界面。注释掉无效的行数，修正提交记录，保存退出。</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">文章标签等属性简介</span><br><span class="hljs-attr">excerpt:</span> <span class="hljs-string">我是摘要部分，显示在主页的列表中</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="2、自动摘要"><a href="#2、自动摘要" class="headerlink" title="2、自动摘要"></a>2、自动摘要</h3><ul>
-<li>在文章内部可以使用 <code>&lt;!-- more --&gt; </code> 来标识摘要。在该标签的前面部分被视为摘要。这种方式产生的摘要会被 <code>excerpt</code> 覆盖。</li>
+<p><img src="/img/git/git_04.jpg" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>这时候再看提交记录，已经变成一条啦！</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml">文章内容xxx，摘要部分，显示在首页列表中。<br><span class="hljs-comment">&lt;!-- more --&gt;</span><br>文章内容xxx，不显示在首页列表。<br></code></pre></td></tr></table></figure>
-
-<h1 id="六、文章置顶"><a href="#六、文章置顶" class="headerlink" title="六、文章置顶"></a>六、文章置顶</h1><ul>
-<li>在文章头部，使用 <code>sticky</code> 来标识文章的优化级，值越大，文章越显示在前面部分，类似于置顶。</li>
+<h1 id="四、推送到远端"><a href="#四、推送到远端" class="headerlink" title="四、推送到远端"></a>四、推送到远端</h1><ul>
+<li>执行 <code>git push -f</code> 命令将修改推送到远端。</li>
+<li>如果代码没提交过，可以直接通过 <code>git push</code> 推送，如果已经提交过，则可能提示 <code>git pull xxx</code>，不用管它直接 <code>force</code> 推送。</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">文章标签等属性简介</span><br><span class="hljs-attr">index_img:</span> <span class="hljs-string">/img/daocao01.jpeg</span><br><span class="hljs-attr">sticky:</span> <span class="hljs-number">100</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs maxima">git <span class="hljs-built_in">push</span> -f<br>或者<br>git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> xxx/xxx -f<br></code></pre></td></tr></table></figure>
                             
                         </div>
                         
@@ -413,7 +391,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/" class="category-chain-item">程序人生</a>
+  <a href="/categories/Git/" class="category-chain-item">Git</a>
   
   
 
@@ -430,33 +408,6 @@
       </span>
     
   
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Hexo/" class="category-chain-item">Hexo</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Hexo/Blog/" class="category-chain-item">Blog</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%80%86%E5%A4%A9%E6%94%B9%E5%91%BD/" class="category-chain-item">逆天改命</a>
-  
-  
-
-      </span>
-    
-  
 </span>
 
     </div>
@@ -465,15 +416,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
-      
-        <a href="/tags/Hexo/">#Hexo</a>
-      
-        <a href="/tags/Blog/">#Blog</a>
-      
-        <a href="/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/">#程序人生</a>
-      
-        <a href="/tags/%E9%80%86%E5%A4%A9%E6%94%B9%E5%91%BD/">#逆天改命</a>
+        <a href="/tags/Git/">#Git</a>
       
     </div>
   
@@ -485,8 +428,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hexo 文章标签等属性简介</div>
-      <div>http://jxr202.github.io/2022/10/14/hexo/Hexo 文章标签和类别等属性/</div>
+      <div>Git 将多条commit合并为一条</div>
+      <div>http://jxr202.github.io/2022/10/17/git/Git-将多条commit合并为一条/</div>
     </div>
     <div class="license-meta">
       
@@ -498,7 +441,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月14日</div>
+          <div>2022年10月17日</div>
         </div>
       
       
@@ -530,18 +473,12 @@
                                 <article class="post-prev col-6">
                                     
                                     
-                                    <a href="/2022/10/15/mba/2020%E5%B9%B4%E7%AE%A1%E7%90%86%E7%B1%BB%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A6/" title="2020年管理类联考数学">
-                                        <i class="iconfont icon-arrowleft"></i>
-                                        <span class="hidden-mobile">2020年管理类联考数学</span>
-                                        <span class="visible-mobile">上一篇</span>
-                                    </a>
-                                    
                                 </article>
                                 <article class="post-next col-6">
                                     
                                     
-                                    <a href="/2022/10/13/Hexo-%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/" title="Hexo 多端同步">
-                                        <span class="hidden-mobile">Hexo 多端同步</span>
+                                    <a href="/2022/10/16/mac/Android%20Studio%20for%20Mac%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="Android Studio for Mac 快捷键">
+                                        <span class="hidden-mobile">Android Studio for Mac 快捷键</span>
                                         <span class="visible-mobile">下一篇</span>
                                         <i class="iconfont icon-arrowright"></i>
                                     </a>

@@ -4,6 +4,205 @@
   
   
   <entry>
+    <title>Git 将多条commit合并为一条</title>
+    <link href="/2022/10/17/git/Git-%E5%B0%86%E5%A4%9A%E6%9D%A1commit%E5%90%88%E5%B9%B6%E4%B8%BA%E4%B8%80%E6%9D%A1/"/>
+    <url>/2022/10/17/git/Git-%E5%B0%86%E5%A4%9A%E6%9D%A1commit%E5%90%88%E5%B9%B6%E4%B8%BA%E4%B8%80%E6%9D%A1/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/git/git_bg_02.jpeg"></p><h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><ul><li>在做新功能开发的过程中，往往会涉及多次 <code>commit</code>。</li><li>通常来说，在发布版本时，多次提交会直接 <code>push</code> 到主分支。</li><li>但在某些特殊情况，限制我们只能做一次提交，这时候需要进行 <code>commit</code> 合并了。</li></ul><h1 id="二、找出要合并的提交记录"><a href="#二、找出要合并的提交记录" class="headerlink" title="二、找出要合并的提交记录"></a>二、找出要合并的提交记录</h1><ul><li>可以通过 <code>git log</code> 命令找出最近的提交记录。</li><li>使用 <code>IDEA</code> 或 <code>Android Studio </code> 开发的话，直接就能在底部的工具栏中可以看到提交记录。</li></ul><p><img src="/img/git/git_01.jpg"></p><h1 id="三、合并提交"><a href="#三、合并提交" class="headerlink" title="三、合并提交"></a>三、合并提交</h1><ul><li>如上图所示，要合并最近的 <code>4</code> 条记录，可以有 <code>2</code> 种方法：</li></ul><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">git</span> rebase -i HEAD~<span class="hljs-number">4</span><br></code></pre></td></tr></table></figure><ul><li>或者：</li></ul><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">git rebase -<span class="hljs-selector-tag">i</span> fc2bc000<br></code></pre></td></tr></table></figure><ul><li>其中的 <code>HEAD~4</code> 表示最近的4次提交，<code>fc2bc000</code> 为4次提交的父记录，即倒数第5次提交。</li></ul><p><img src="/img/git/git_02.jpg"></p><ul><li>在弹出的界面，按 <code>i</code> 进入编辑模式，并将后面3条记录的 <code>pick</code> 改为 <code>s</code> 或 <code>squash</code>。</li><li>按 <code>ESC</code> 退出编辑模式，再输入 <code>:wq</code> 保存修改记录并退出。</li></ul><p><img src="/img/git/git_03.jpg"></p><ul><li>然后弹出合并后的 <code>commit</code> 界面。注释掉无效的行数，修正提交记录，保存退出。</li></ul><p><img src="/img/git/git_04.jpg"></p><ul><li>这时候再看提交记录，已经变成一条啦！</li></ul><h1 id="四、推送到远端"><a href="#四、推送到远端" class="headerlink" title="四、推送到远端"></a>四、推送到远端</h1><ul><li>执行 <code>git push -f</code> 命令将修改推送到远端。</li><li>如果代码没提交过，可以直接通过 <code>git push</code> 推送，如果已经提交过，则可能提示 <code>git pull xxx</code>，不用管它直接 <code>force</code> 推送。</li></ul><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs maxima">git <span class="hljs-built_in">push</span> -f<br>或者<br>git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> xxx/xxx -f<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Git</category>
+      
+      <category>原创</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Android Studio for Mac 快捷键</title>
+    <link href="/2022/10/16/mac/Android%20Studio%20for%20Mac%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <url>/2022/10/16/mac/Android%20Studio%20for%20Mac%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/mac/mac_bg_05.jpeg"></p><ul><li>Android Studio 在 <code>Mac</code> 和 <code>Windows</code> 上的快捷键还是有一定的差异。</li></ul><figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">查找类或文件</span><span class="hljs-punctuation">:</span> <span class="hljs-string">双击 Shift</span><br><br><span class="hljs-attribute">查找文件内容</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + Shift + F</span><br><br><span class="hljs-attribute">快速构成代码</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + N</span><br><br><span class="hljs-attribute">代码提示</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Control + Space (Mac 会冲突, 需要修改)</span><br><br><span class="hljs-attribute">向下移动一行</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + Shift + Down 或 Option + Shift + Down</span><br><br><span class="hljs-attribute">向上移动一行</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + Shift + Up 或 Option + Shift + Up</span><br><br><span class="hljs-attribute">注释代码</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + /</span><br><br><span class="hljs-attribute">格式化代码</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + Option + L</span><br><br><span class="hljs-attribute">if/try 等包裹代码</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + Option + T</span><br><br><span class="hljs-attribute">快捷向下复制行</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + D</span><br><br><span class="hljs-attribute">删除行</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + Delete 或 Command + X</span><br><br><span class="hljs-attribute">代码高亮向下查找</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + G</span><br><br><span class="hljs-attribute">代码高亮向上查找</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + Shift + G</span><br><br><span class="hljs-attribute">定位到行</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + L</span><br><br><span class="hljs-attribute">快速到行首 / 尾</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Command + Left / Right</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>mac</category>
+      
+      <category>原创</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mac</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>MacBook常用快捷键</title>
+    <link href="/2022/10/16/mac/MacBook%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <url>/2022/10/16/mac/MacBook%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/mac/mac_bg_04.jpeg"></p><h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><ul><li>MacBook 有一个特殊的按键 <code>Command</code>，相当于 Windows 的 <code>Ctrl</code> 键。</li></ul><h1 id="二、常用快捷键"><a href="#二、常用快捷键" class="headerlink" title="二、常用快捷键"></a>二、常用快捷键</h1><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs arcade">Command + Shift + . =&gt; 显示或隐藏文件<br>Control + 单击 =&gt; 鼠标右键；<br>Command + <span class="hljs-function"><span class="hljs-params">A</span> =&gt;</span> 全选；<br>Command + <span class="hljs-function"><span class="hljs-params">M</span> =&gt;</span> 缩小窗口；<br>Command + <span class="hljs-function"><span class="hljs-params">W</span> =&gt;</span> 关闭窗口；<br>Command + <span class="hljs-function"><span class="hljs-params">C</span> =&gt;</span> 连接服务器；<br>Command + <span class="hljs-function"><span class="hljs-params">H</span> =&gt;</span> 隐藏窗口；<br>Command + <span class="hljs-function"><span class="hljs-params">Q</span> =&gt;</span> 退出应用程序；<br>Command + <span class="hljs-function"><span class="hljs-params">Z</span> =&gt;</span> 恢复上一步；<br>Command + <span class="hljs-function"><span class="hljs-params">E</span> =&gt;</span> 退出外接装置；<br>Command + shift + <span class="hljs-function"><span class="hljs-params">Z</span> =&gt;</span> 恢复下一步；<br>Command + shift + <span class="hljs-function"><span class="hljs-params">F</span> =&gt;</span> 前往Finder;<br>Command + <span class="hljs-function"><span class="hljs-params">option</span> =&gt;</span> 隐藏（打开）Dock;<br>Command + option + <span class="hljs-function"><span class="hljs-params">W</span> =&gt;</span> 关闭所有窗口；<br>Command + option + <span class="hljs-function"><span class="hljs-params">M</span> =&gt;</span> 缩小所有窗口；<br>Command + shift + <span class="hljs-function"><span class="hljs-params">A</span> =&gt;</span> 前往应用程序文件夹（在finder时）<br>Command + control + option + <span class="hljs-number">8</span> =&gt; 全屏幕反显；<br>Command + control + option + 弹出键 =&gt; 关机；<br>Command + control + 开关键 =&gt; 强制重开机；<br>Command + option + 弹出键 =&gt; 电脑休眠；<br>Command + option + <span class="hljs-function"><span class="hljs-params">esc</span> =&gt;</span> 强制退出应用程序；<br>Command + 单按标题列 =&gt; 跳到上一页；<br>Command + <span class="hljs-function"><span class="hljs-params">delete</span> =&gt;</span> 删除文件；<br>Command + option + shift + <span class="hljs-function"><span class="hljs-params">delete</span> =&gt;</span> 强制清除废纸篓；<br>Command + option + <span class="hljs-function"><span class="hljs-params">D</span> =&gt;</span> 打开内置字典，单字实时翻译；<br>Command + .（句号） =&gt; 终止任何进行中的操作；<br>Command + <span class="hljs-function"><span class="hljs-params">down</span> =&gt;</span> 在任何文件上使用，可以直接打开该文件；<br>fn + <span class="hljs-function"><span class="hljs-params">delete</span> =&gt;</span> 删除光标右边的字；<br>Command + <span class="hljs-function"><span class="hljs-params">esc</span> =&gt;</span> 启动Front Row窗口操作。<br></code></pre></td></tr></table></figure><h1 id="三、窗口操作"><a href="#三、窗口操作" class="headerlink" title="三、窗口操作"></a>三、窗口操作</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">command</span> + W =&gt; 关闭单一窗口；<br><span class="hljs-keyword">command</span> + N =&gt; 打开新窗口；<br><span class="hljs-keyword">command</span> + <span class="hljs-keyword">option</span> + W =&gt; 关闭所有窗口；<br><span class="hljs-keyword">command</span> + 窗口名称栏 =&gt; 可弹出窗口路径；<br><span class="hljs-keyword">command</span> + <span class="hljs-keyword">option</span> + 窗口名称栏 =&gt; 可返回路径窗口并关掉目前窗口。<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>mac</category>
+      
+      <category>原创</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mac</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>MacBook安装NodeJS详解</title>
+    <link href="/2022/10/16/mac/MacBook%E5%AE%89%E8%A3%85NodeJS%E8%AF%A6%E8%A7%A3/"/>
+    <url>/2022/10/16/mac/MacBook%E5%AE%89%E8%A3%85NodeJS%E8%AF%A6%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/mac/mac_bg_03.jpeg"></p><h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><ul><li>本文以 MacBook 为准，其他设备安装 <code>Node.js</code> 大同小异。</li><li><code>Node.js</code> 已经自带 <code>npm</code> 了</li></ul><h1 id="二、下载客户端"><a href="#二、下载客户端" class="headerlink" title="二、下载客户端"></a>二、下载客户端</h1><ul><li>进入官网，下载 <code>Node.js</code> 最新版本安装包。</li><li>传送门：<a href="https://nodejs.org/zh-cn/download/">https://nodejs.org/zh-cn/download/</a></li></ul><p><img src="/img/mac/mac_04.jpg"></p><h1 id="三、安装客户端"><a href="#三、安装客户端" class="headerlink" title="三、安装客户端"></a>三、安装客户端</h1><ul><li>双击刚下载的安装包，一直点继续就 OK 啦</li></ul><p><img src="/img/mac/mac_05.jpg"></p><h1 id="四、验证"><a href="#四、验证" class="headerlink" title="四、验证"></a>四、验证</h1><ul><li>打开终端，输入 <code>node -v</code> 和 <code>npm -v</code></li></ul><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">-v</span><br>npm -v<br></code></pre></td></tr></table></figure><ul><li>如果能正常显示版本号即安装成功</li><li>如图，我安装的 <code>node.js</code> 和 <code>npm</code> 版本分别是是 <code>v16.18.0</code> 和 <code>8.19.2</code></li></ul><p><img src="/img/mac/mac_06.jpg"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>mac</category>
+      
+      <category>原创</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mac</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>MacBook查看IP地址</title>
+    <link href="/2022/10/16/mac/MacBook%E6%9F%A5%E7%9C%8BIP%E5%9C%B0%E5%9D%80/"/>
+    <url>/2022/10/16/mac/MacBook%E6%9F%A5%E7%9C%8BIP%E5%9C%B0%E5%9D%80/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/mac/mac_bg_02.jpeg"></p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul><li>MacBook 和 Windows 不一样，查看 IP 不是直接点网络图标就行</li></ul><h1 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h1><ul><li>打开终端，输入 <code>ifconfig | grep &quot;inet&quot;</code></li></ul><p><img src="/img/mac/mac_02.jpg"></p><h1 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h1><ul><li>系统偏好设置 - 网络 - 高级 - TCP&#x2F;IP - IPv4地址，显示的内容即为 IP。</li></ul><p><img src="/img/mac/mac_03.jpg"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>mac</category>
+      
+      <category>原创</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mac</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>MacBook修改终端主机名称</title>
+    <link href="/2022/10/16/mac/MacBook%E4%BF%AE%E6%94%B9%E7%BB%88%E7%AB%AF%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0/"/>
+    <url>/2022/10/16/mac/MacBook%E4%BF%AE%E6%94%B9%E7%BB%88%E7%AB%AF%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/mac/mac_bg_01.jpeg"></p><h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><ul><li>新买的 MacBook Pro 初始化后，电脑名称会是 <code>xxx的MacBook Pro</code>，然后在终端上显示 <code>xxx@xxxdeMacBook-Pro</code>，太长了。</li></ul><h1 id="二、修改终端名称"><a href="#二、修改终端名称" class="headerlink" title="二、修改终端名称"></a>二、修改终端名称</h1><ul><li>修改终端的显示名称 HostName:</li></ul><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams">sudo scutil --<span class="hljs-keyword">set</span> HostName <span class="hljs-comment">jiangxr</span><br></code></pre></td></tr></table></figure><ul><li>修改后，再次打开终端，显示的即为新的名称：</li></ul><p><img src="/img/mac/mac_01.jpg"></p><h1 id="三、修改访达中的电脑名称"><a href="#三、修改访达中的电脑名称" class="headerlink" title="三、修改访达中的电脑名称"></a>三、修改访达中的电脑名称</h1><ul><li>修改访达中的电脑名称：</li></ul><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams">sudo scutil --<span class="hljs-keyword">set</span> ComputerName <span class="hljs-comment">jxr</span><br></code></pre></td></tr></table></figure><h1 id="四、修改本地主机名称"><a href="#四、修改本地主机名称" class="headerlink" title="四、修改本地主机名称"></a>四、修改本地主机名称</h1><ul><li>修改本地主机名称：</li></ul><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams">sudo scutil --<span class="hljs-keyword">set</span> LocalHostName <span class="hljs-comment">jiangxr</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>mac</category>
+      
+      <category>环境配置</category>
+      
+      <category>原创</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mac</tag>
+      
+      <tag>环境配置</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2020年管理类联考数学</title>
+    <link href="/2022/10/15/mba/2020%E5%B9%B4%E7%AE%A1%E7%90%86%E7%B1%BB%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A6/"/>
+    <url>/2022/10/15/mba/2020%E5%B9%B4%E7%AE%A1%E7%90%86%E7%B1%BB%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A6/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/mba/mba_001.jpeg"></p><h1 id="一、问题求解"><a href="#一、问题求解" class="headerlink" title="一、问题求解"></a>一、问题求解</h1><blockquote><p>1、某产品去年涨价10%，今年涨价20%，则该产品这两年涨价( )<br>A、15%<br>B、16%<br>C、30%<br>D、32%<br>E、33%</p></blockquote><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gcode">解析：<br>以原价为基准，涨 <span class="hljs-number">10</span><span class="hljs-meta">%</span> 即为 <span class="hljs-number">1.1</span>，再涨 <span class="hljs-number">20</span><span class="hljs-meta">%</span>，即为 <span class="hljs-number">1.1</span> * <span class="hljs-number">1.2</span> = <span class="hljs-number">1.32</span>，也就是说一共涨了<span class="hljs-number">32</span><span class="hljs-meta">%</span>。<br>本题选 D，可惜的是有的同学直接相加选了 C，错得可惜。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>2、设集合A&#x3D;{𝑥│|𝑥−𝑎|＜1，𝑥∈𝑅}，B&#x3D;{𝑥│|𝑥−𝑏|＜2，𝑥∈𝑅}，则A⊂B的充分必要条件是( )<br>A、|𝑎−𝑏|≤1<br>B、|𝑎−𝑏|≥1<br>C、|𝑎−𝑏|＜1<br>D、|𝑎−𝑏|＞1<br>E、|𝑎−𝑏|&#x3D;1</p></blockquote><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dns">解析：<br>这题直接做会很复杂，瞄一眼直接就用特值代入法。<br>从选项中看出基本上都是围绕<span class="hljs-number">1</span>在转，直接取a=<span class="hljs-number">1</span>,b=<span class="hljs-number">0</span>，得<span class="hljs-keyword">A</span>=(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>),B=(-<span class="hljs-number">2</span>，<span class="hljs-number">2</span>)，符合<span class="hljs-keyword">A</span>⊂B，排除C和D。<br>再取a=<span class="hljs-number">1</span>/<span class="hljs-number">2</span>,b=<span class="hljs-number">0</span>，得出<span class="hljs-keyword">A</span>=(-<span class="hljs-number">1</span>/<span class="hljs-number">2</span>, <span class="hljs-number">3</span>/<span class="hljs-number">2</span>)，B=(-<span class="hljs-number">2</span>, <span class="hljs-number">2</span>)，同样符合<span class="hljs-keyword">A</span>⊂B，排除B和E，答案只有<span class="hljs-keyword">A</span>。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>3、一项考试的总成绩由甲、乙、丙三部分组成:<br>总成绩&#x3D;甲成绩×30%+乙成绩×20%+丙成绩×50%。<br>考试通过标注是：每部分≥50分，且总成绩≥60分。<br>已知某人甲成绩70分，乙成绩75分，且通过了这项考试，则此人丙成绩的分数至少是( )<br>A、48<br>B、50<br>C、55<br>D、60<br>E、62</p></blockquote><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs llvm">解析：<br>这题有<span class="hljs-number">2</span>个要求，一是单项为<span class="hljs-number">50</span>以上，二是总成绩为<span class="hljs-number">60</span>以上。<br>将<span class="hljs-number">70</span>和<span class="hljs-number">75</span>代入题中的总成绩公式，<span class="hljs-number">70</span> * <span class="hljs-number">0.3</span> + <span class="hljs-number">75</span> * <span class="hljs-number">0.2</span> + <span class="hljs-number">0.5</span><span class="hljs-keyword">x</span> &gt;<span class="hljs-operator">=</span> <span class="hljs-number">60</span><span class="hljs-punctuation">,</span><br>得出<span class="hljs-keyword">x</span> &gt;<span class="hljs-operator">=</span> <span class="hljs-number">48</span>，但第一个要求是<span class="hljs-number">50</span>以上，只有选B了。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>4、从1-10这10个整数中任取3个数，恰有1个质数的概率是( )<br>A、2&#x2F;3<br>B、1&#x2F;2<br>C、5&#x2F;12<br>D、2&#x2F;5<br>E、1&#x2F;120</p></blockquote><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tap">解析：<br>这题首先得清楚质数是啥，10以内只有2、3、5、7这4个数为质数，别把1扯进去。<br>取3个数，1质数的取法有: C4取1 * C6取2 =<span class="hljs-number"> 4 </span>*<span class="hljs-number"> 15 </span>= 60。<br>取3个数，随便取的取法有: C10取3 = 120。故概念为<span class="hljs-number"> 60 </span>/<span class="hljs-number"> 120 </span>= 1/2。<br>分析：<br>有的同学把1当作质数算进去发现答案为5/12，直接选了C，很是可惜。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>5、$若等差数列𝑎_{𝑛}满足𝑎_{1}&#x3D;8 ，且𝑎_{2}+𝑎_{4}&#x3D;𝑎_{1}，则𝑎_{𝑛}的前𝑛项和的最大值为$（ ）<br>A、16<br>B、17<br>C、18<br>D、19<br>E、20</p></blockquote><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tap">解析：<br>题目说了a1=8，列出等式<span class="hljs-number"> 8 </span>+ d +<span class="hljs-number"> 8 </span>+ 3d = 8，得出d=-2。也就是说每一项都比前一项少2。<br>因此前n项最大值为<span class="hljs-number"> 8 </span>+<span class="hljs-number"> 6 </span>+<span class="hljs-number"> 4 </span>+<span class="hljs-number"> 2 </span>= 20<br>分析：<br>这是送分题。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>6、已知实数 $𝑥$ 满足 $𝑥^2 + \frac{1}{𝑥^2} −3𝑥 + \frac3x + 2 &#x3D; 0$，则$ 𝑥^3 + \frac1{𝑥^3} $&#x3D;( )<br>A、12<br>B、15<br>C、18<br>D、24<br>E、27</p></blockquote><p><img src="/img/mba/math_06.png"></p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">解析：<br>事实上，这题主要考查化平方和公式，如果对平方和公司熟悉的话这就是送分题。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>7、设实数 𝑥,𝑦 满足 |𝑥−2|+|𝑦−2|⩽2 ，则 $𝑥^2+𝑦^2$ 的取值范围是（ ）<br>A、[2,18]<br>B、[2,20]<br>C、[2,36]<br>D、[4,18]<br>E、[4,20]</p></blockquote><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">解析：<br>从5个选项分析，这题的最小值只能是2和4，但<span class="hljs-attribute">x</span>=1,y=1符合题目要求，即最小值可以取到2。<br>然后再看最大值，2个数绝度值小于等于2，要取最大值只能取边界值，即一个是2一个是0。<br>可以让<span class="hljs-attribute">x-2</span>=2，y-2=0，从而得到x=4，y=2，最大值为20，选B。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>8、某网站对单价为55元，75元，80元的三种商品进行促销，促销策略是每单满200元减𝑚元，<br>如果每单减𝑚元后实际售价均不低于原价的8折,那么𝑚的最大值为( )<br>A、40<br>B、41<br>C、43<br>D、44<br>E、48</p></blockquote><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs subunit">解析：<br>三件商品满200打折，200选的组合最小为50<span class="hljs-string">+75</span><span class="hljs-string">+75</span>，最大为80<span class="hljs-string">+80</span><span class="hljs-string">+80</span>，<br>分别对这两种组合代进去算m，算出一个是41，一个是48。<br>商家一般都比较扣，你只能减41，如果减48则有的会低于8折。<br>分析：<br>这题其实很坑，很多人都选错了，包括我。看出41和48后我就直接选了48，亏大发了。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>9、某人在统一观众群体中调查了对五部电影的看法，得到如下数据：<br>据此数据，观众意见分歧最大的前两部电影依次是( )。<br>A、第一部，第三部<br>B、第二部，第三部<br>C、第二部，第五部<br>D、第四部，第一部<br>E、第四部，第二部</p><table><thead><tr><th align="center">电影</th><th align="center">第一部</th><th align="center">第二部</th><th align="center">第三部</th><th align="center">第四部</th><th align="center">第五部</th></tr></thead><tbody><tr><td align="center">好评率</td><td align="center">0.25</td><td align="center">0.5</td><td align="center">0.3</td><td align="center">0.8</td><td align="center">0.4</td></tr><tr><td align="center">差评率</td><td align="center">0.75</td><td align="center">0.5</td><td align="center">0.7</td><td align="center">0.2</td><td align="center">0.6</td></tr></tbody></table></blockquote><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mathematica">解析：<br>首先要弄清什么叫分歧大，也就是好评和差评差不多才叫分歧大。<br>如果清一色好评或差评，就没有分歧了。<br>故选<span class="hljs-built_in">C</span>。<br>分析：<br>这题其实很坑，由于概念容易混淆，好多的考生被命题老师给戏耍了。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>10、如图，在△ABC中，∠ABC&#x3D;30°，将线段AB绕点B旋转至DB，使∠DBC&#x3D;60°，则△DBC和△ABC的面积之比为( )<br>A、1<br>B、√2<br>C、2<br>D、√3&#x2F;2<br>E、√3<br><img src="/img/mba/math_10.jpeg"></p></blockquote><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">解析：<br>三角形面积公式，S<span class="hljs-operator">=</span><span class="hljs-number">1</span>/<span class="hljs-number">2</span> * a * b * sinΘ。<br>由于边长没有变化，只有夹角变化了。故面积比为 sin60度/sin30度 <span class="hljs-operator">=</span> √<span class="hljs-number">3</span><br>分析：<br>还是要熟悉三角形面积公式呀。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>11、已知数列 $𝑎_{𝑛}$ 满足 $𝑎_{1}&#x3D;1,𝑎_{2}&#x3D;2$ ，且 $𝑎_{𝑛+2}&#x3D;𝑎_{𝑛+1}−𝑎_{𝑛}(𝑛&#x3D;1,2,3…)$，则 $𝑎_{100}$&#x3D;( )<br>A、1<br>B、-1<br>C、2<br>D、-2<br>E、0</p></blockquote><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs subunit">解析：<br>本题需要找规律，数列6组一循环，分别是1、2、1、<span class="hljs-string">-1</span>、<span class="hljs-string">-2</span>、<span class="hljs-string">-1</span>。<br>a100=a(96<span class="hljs-string">+4</span>)=a4=<span class="hljs-string">-1</span><br>分析：<br>找规律是解数列的常用技巧<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>12、如图，圆𝑂的内接△ABC 是等腰三角形，底边BC&#x3D;6，顶角为π&#x2F;4，则圆𝑂的面积为( )<br>A、12π<br>B、16π<br>C、18π<br>D、32π<br>E、36π<br><img src="/img/mba/math_12.jpeg"></p></blockquote><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">解析：<br>题目说顶角为<span class="hljs-number">45</span>度，那么OB、OC连起来的∠B0C即为<span class="hljs-number">90</span>度，这是初中的知识点了。<br>由BC<span class="hljs-operator">=</span><span class="hljs-number">6</span>得出OB<span class="hljs-operator">=</span>OC<span class="hljs-operator">=</span><span class="hljs-number">3</span>√<span class="hljs-number">2</span>，故面积为πr平方等于<span class="hljs-number">18</span>π。<br>分析：<br>这是初中的知识点了。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>13、A、B两地相距1800m，甲、乙两人分别从A、B两地同时出发相向而行，甲的速度100米&#x2F;分， 乙的速度80米&#x2F;分，两人到达对面后立即按原速度返回，则两人第三次相遇时，甲距其出发点( )米.<br>A、600<br>B、900<br>C、1000<br>D、1400<br>E、1600</p></blockquote><p><img src="/img/mba/math_13.jpg"></p><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dns">解析：<br>从图可以看出，第一次相遇<span class="hljs-number">2</span>人走完一条线，第二次相遇是<span class="hljs-number">2</span>人走完三条线，第三次相遇则是走完<span class="hljs-number">5</span>条线。<br>他们<span class="hljs-number">2</span>人走完一条线的时间为<span class="hljs-number">1800</span>/(<span class="hljs-number">100</span>+<span class="hljs-number">80</span>)=<span class="hljs-number">10</span>，走<span class="hljs-number">5</span>条线的时间为<span class="hljs-number">50</span>。<br>那么，甲<span class="hljs-number">50</span>的时间走了<span class="hljs-number">5000</span>米，距离<span class="hljs-keyword">A</span>的距离为<span class="hljs-number">500-1800</span>-<span class="hljs-number">1800为1400</span>米。<br>分析：<br>本题主要考画图及脑力思考<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>14、节点A、B、C、D两两相连，从一个节点沿线段到另一个节点当作1步， 若机器人从节点A出发，随机走了3步，则机器人未到达节点C的概率为( )<br>A、4&#x2F;9<br>B、11&#x2F;27<br>C、10&#x2F;27<br>D、19&#x2F;27<br>E、8&#x2F;27<br><img src="/img/mba/math_14.jpeg"></p></blockquote><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica">解析：<br>这题初看起来会让人一脸蒙逼，但认真思考后发现可以用穷举法。<br>从<span class="hljs-variable">A</span>出发不过<span class="hljs-built_in">C</span>，那么只有向<span class="hljs-variable">B</span>和向<span class="hljs-built_in">D</span>走，走<span class="hljs-number">3</span>步，路径分别为：<br>向<span class="hljs-variable">B</span>出发：<span class="hljs-variable">ABAB</span>、<span class="hljs-variable">ABAD</span>、<span class="hljs-variable">ABDB</span>、<span class="hljs-variable">ABDA</span><br>向<span class="hljs-built_in">D</span>出发：<span class="hljs-variable">ADAD</span>、<span class="hljs-variable">ADAB</span>、<span class="hljs-variable">ADBD</span>、<span class="hljs-variable">ADBA</span><br>就这<span class="hljs-number">8</span>种了，但如果随机走，总步数有<span class="hljs-number">3</span><span class="hljs-operator">*</span><span class="hljs-number">3</span><span class="hljs-operator">*</span><span class="hljs-number">3</span><span class="hljs-operator">=</span><span class="hljs-number">27</span>种，故概率为<span class="hljs-number">8</span><span class="hljs-operator">/</span><span class="hljs-number">27</span><br>分析：<br>这题一开始把我也给搞蒙了，但细心思考还是能解的。<br></code></pre></td></tr></table></figure><br/><br/><blockquote><p>15、若科室有4名男职员，2名女职员，若将这6名职员分为3组，每组2人，且女职员不同组， 有( )种分组情况<br>A、4<br>B、6<br>C、9<br>D、12<br>E、15</p></blockquote><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs subunit">解析：<br>从题目看，要分成3组，4个男的只有2<span class="hljs-string">+1</span><span class="hljs-string">+1</span>这种分法。有C4取2即6种。<br>然后2个女性可以放到原先的1<span class="hljs-string">+1</span>上，有2种分法。<br>故总方法有6*2=12种。<br></code></pre></td></tr></table></figure><br/><br/><h1 id="二、说明"><a href="#二、说明" class="headerlink" title="二、说明"></a>二、说明</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">这曾经是我考研的那一年的考题，考完后，我写了一篇长长的分析讲解。如果有兴趣，下面是链接。<br><br>传送门：http:<span class="hljs-regexp">//</span>luntan.sunlands.com<span class="hljs-regexp">/community-pc-war/</span><span class="hljs-comment">#post/10558744</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>原创</category>
+      
+      <category>mba</category>
+      
+      <category>数学</category>
+      
+      <category>逆天改命</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mba</tag>
+      
+      <tag>数学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hexo 文章标签等属性简介</title>
     <link href="/2022/10/14/hexo/Hexo%20%E6%96%87%E7%AB%A0%E6%A0%87%E7%AD%BE%E5%92%8C%E7%B1%BB%E5%88%AB%E7%AD%89%E5%B1%9E%E6%80%A7/"/>
     <url>/2022/10/14/hexo/Hexo%20%E6%96%87%E7%AB%A0%E6%A0%87%E7%AD%BE%E5%92%8C%E7%B1%BB%E5%88%AB%E7%AD%89%E5%B1%9E%E6%80%A7/</url>
@@ -15,13 +214,13 @@
       
       <category>程序人生</category>
       
+      <category>原创</category>
+      
       <category>Hexo</category>
       
       <category>Blog</category>
       
       <category>逆天改命</category>
-      
-      <category>原创</category>
       
     </categories>
     
