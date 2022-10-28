@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Redux 基本概念</title>
+    <link href="/2022/10/27/redux/redux_001/"/>
+    <url>/2022/10/27/redux/redux_001/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/redux/redux_bg_01.jpeg"></p><h1 id="一、三大核心概念"><a href="#一、三大核心概念" class="headerlink" title="一、三大核心概念"></a>一、三大核心概念</h1><p><img src="/img/redux/redux_001.webp"></p><h2 id="1、Store"><a href="#1、Store" class="headerlink" title="1、Store"></a>1、Store</h2><ul><li><p><code>Store</code> 可理解为仓库、水池，用于存放数据的容器，一个应用通常只有一个 <code>Store</code>。</p><ul><li><p><code>React / JavaScript</code> 创建 <code>Store</code>:</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">import</span> &#123; createStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux&#x27;</span>;<br><br><span class="hljs-keyword">const</span> store = <span class="hljs-title function_">createStore</span>(reducers);<br></code></pre></td></tr></table></figure></li><li><p><code>Flutter / Dart</code> 创建 <code>Store</code>。</p><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:redux/redux.dart&#x27;</span>;<br>        <br><span class="hljs-keyword">final</span> store = Store&lt;AppState&gt;(reducers);<br></code></pre></td></tr></table></figure></li></ul></li><li><p>注意：不管是 <code>React</code> 还是 <code>Flutter</code> 中，创建 <code>Store</code> 时必须要传入一个函数作为参数，该函数为 <code>Reducer</code>，后边会讲到。</p></li></ul><h2 id="2、Action"><a href="#2、Action" class="headerlink" title="2、Action"></a>2、Action</h2><ul><li><p><code>Action</code> 在这里作名词，可理解为（向 <code>Store</code> 水池中打水漂的）石块。</p><ul><li><p><code>React / JavaScript</code> 中的 <code>action</code> 为一个 <code>JSON</code> 对象，该对象必须要有一个 <code>type</code> 属性，其他属性没有限制。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> add = &#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;ADD&#x27;</span>,<br>  <span class="hljs-attr">val</span>: <span class="hljs-number">5</span><br>&#125;;<br><span class="hljs-keyword">const</span> dec = &#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;DEC&#x27;</span>,<br>  <span class="hljs-attr">val</span>: <span class="hljs-number">1</span>,<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p><code>Flutter / Dart</code> 中的 <code>action</code> 和 <code>JavaScript</code> 的用类似，但 <code>type</code> 属性不再是必须的了，这里直接使用简单的枚举来标识不同的 <code>action</code>。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">Actions</span> &#123;<br>  ADD, DEC,  <br>&#125;<br></code></pre></td></tr></table></figure></li></ul></li></ul><h2 id="3、Reducer"><a href="#3、Reducer" class="headerlink" title="3、Reducer"></a>3、Reducer</h2><ul><li><p>Reducer 为不包含任何逻辑的纯函数。在向水池打水漂的例子中，水池随着石块的变化而变化遵循着某种函数规律，这个函数即为 Reducer。</p></li><li><p>Reducer 作为一个函数，接收一个状态 <code>State</code> 和事件 <code>Action</code>，得到新的状态 <code>NewState</code>。</p><ul><li><code>React / JavaScript</code> 中的 <code>reducer</code> 。</li></ul>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">reducer</span> = (<span class="hljs-params">state, action</span>) =&gt; newState;<br><br><span class="hljs-comment">// 以下为一个例子</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">counterReducer</span> = (<span class="hljs-params">state = <span class="hljs-number">0</span>, action</span>) =&gt; &#123;<br>    <span class="hljs-keyword">switch</span> (action.<span class="hljs-property">type</span>) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;ADD&#x27;</span>:<br>            <span class="hljs-keyword">return</span> state + action.<span class="hljs-property">val</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;DEC&#x27;</span>:<br>            <span class="hljs-keyword">return</span> state - action.<span class="hljs-property">val</span>;<br>        <span class="hljs-attr">default</span>:<br>            <span class="hljs-keyword">return</span> state;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><ul><li><code>Flutter / Dart</code> 中的 <code>reducer</code> 。</li></ul>  <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Dart"><span class="hljs-keyword">enum</span> Actions &#123;<br>    ADD, DEC,<br>&#125;<br><br><span class="hljs-built_in">int</span> counterReducer(<span class="hljs-built_in">int</span> state, action) &#123;<br>    <span class="hljs-keyword">switch</span> (action) &#123;<br>        <span class="hljs-keyword">case</span> Actions.ADD:<br>            <span class="hljs-keyword">return</span> state + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">case</span> Actions.DEC:<br>            <span class="hljs-keyword">return</span> state - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">default</span>:<br>            <span class="hljs-keyword">return</span> state;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li></ul><h1 id="二、几个重要方法"><a href="#二、几个重要方法" class="headerlink" title="二、几个重要方法"></a>二、几个重要方法</h1><h2 id="1、Store-的常用方法"><a href="#1、Store-的常用方法" class="headerlink" title="1、Store 的常用方法"></a>1、Store 的常用方法</h2><ul><li><p>Store.getState()</p><ul><li><p>该方法返回一个 <code>State</code>，在 <code>Redux</code> 中每一个 <code>State</code> 对应着的一种不同的 <code>UI</code> 状态。</p></li><li><p><code>React / JavaScript</code> 中获取 <code>state</code> :</p></li></ul>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> state = store.<span class="hljs-title function_">getState</span>();<br></code></pre></td></tr></table></figure><ul><li><code>Flutter / Dart</code> 中获取 <code>state</code> :</li></ul>  <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Dart"><span class="hljs-keyword">final</span> state = store.state;<br></code></pre></td></tr></table></figure></li><li><p>Store.dispatch(action)</p><ul><li><p>可以理解为向水池 <code>Store</code> 中扔一个石块 <code>Action</code>。在该方法内部，<code>Store</code> 会根据 <code>Reducer</code> 函数生成一个新的 <code>State</code>，从而引起 <code>UI</code> 的变化。</p></li><li><p><code>React / JavaScript</code> 中的调用 :</p></li></ul>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">store.<span class="hljs-title function_">dispatch</span>(&#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;ADD&#x27;</span>,<br>    <span class="hljs-attr">val</span>: <span class="hljs-number">5</span><br>&#125;);<br></code></pre></td></tr></table></figure><ul><li><code>Flutter / Dart</code> 中的调用 :</li></ul>  <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Dart">store.dispatch(Actions.ADD);<br></code></pre></td></tr></table></figure></li><li><p>Store.subscribe(listener)</p><ul><li><p>向 <code>Store</code> 注册监听，如果 <code>Store</code> 有变化，则为回调 <code>listener</code>。</p></li><li><p><code>React / JavaScript</code> 中的调用 :</p></li></ul>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">store.<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;状态变化：&quot;</span> + store.<span class="hljs-title function_">getState</span>()));<br></code></pre></td></tr></table></figure><ul><li><code>Flutter / Dart</code> 中的调用 :</li></ul>  <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Dart">store.onChange.listen(render)<br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>原创</category>
+      
+      <category>Redux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Redux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>&lt;转&gt;电脑城已死</title>
     <link href="/2022/10/20/reprint/reprint_003/"/>
     <url>/2022/10/20/reprint/reprint_003/</url>
@@ -88,9 +115,9 @@
     
     <categories>
       
-      <category>Git</category>
-      
       <category>原创</category>
+      
+      <category>Git</category>
       
     </categories>
     
@@ -254,13 +281,13 @@
     
     <categories>
       
-      <category>原创</category>
-      
       <category>mba</category>
       
-      <category>逆天改命</category>
-      
       <category>数学</category>
+      
+      <category>原创</category>
+      
+      <category>逆天改命</category>
       
     </categories>
     
@@ -287,11 +314,11 @@
     
     <categories>
       
-      <category>程序人生</category>
-      
       <category>Hexo</category>
       
       <category>Blog</category>
+      
+      <category>程序人生</category>
       
       <category>原创</category>
       
