@@ -16,24 +16,24 @@
   <meta name="author" content="Jiang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、前言 在前一篇博客，我们介绍了 Redux 的基本概念，本次对内容进行提升。传送门: https:&#x2F;&#x2F;jxr202.github.io&#x2F;2022&#x2F;10&#x2F;27&#x2F;redux&#x2F;redux_001  二、概念介绍   对象 库 说明    Store Redux 数据集合、仓库，内部包含了 Reducer、State、Middleware   Action Redux 一种用于触发 State">
+    <meta name="description" content="前言1231、最近在做 Flutter 插件开发时，需要判断是否为折叠屏。2、折叠屏的监听需要用到 Activity，故写下了这篇博客。  1、Flutter 低版本 在低版本的 Flutter 中可以通过 registerWith(Registrar registrar) 方法获取  Android 原生端代码:   12345678910111213141516171819202122232">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redux 之 Middleware 及 Flutter Redux 介绍">
-<meta property="og:url" content="http://jxr202.github.io/2022/11/03/redux/redux_002/index.html">
+<meta property="og:title" content="Flutter插件中获取Activity">
+<meta property="og:url" content="http://jxr202.github.io/2022/12/01/flutter/flutter_002/index.html">
 <meta property="og:site_name" content="先先的个人博客">
-<meta property="og:description" content="一、前言 在前一篇博客，我们介绍了 Redux 的基本概念，本次对内容进行提升。传送门: https:&#x2F;&#x2F;jxr202.github.io&#x2F;2022&#x2F;10&#x2F;27&#x2F;redux&#x2F;redux_001  二、概念介绍   对象 库 说明    Store Redux 数据集合、仓库，内部包含了 Reducer、State、Middleware   Action Redux 一种用于触发 State">
+<meta property="og:description" content="前言1231、最近在做 Flutter 插件开发时，需要判断是否为折叠屏。2、折叠屏的监听需要用到 Activity，故写下了这篇博客。  1、Flutter 低版本 在低版本的 Flutter 中可以通过 registerWith(Registrar registrar) 方法获取  Android 原生端代码:   12345678910111213141516171819202122232">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://jxr202.github.io/img/redux/redux_bg_01.jpeg">
-<meta property="article:published_time" content="2022-11-03T08:04:50.000Z">
-<meta property="article:modified_time" content="2022-11-03T09:11:17.102Z">
+<meta property="og:image" content="http://jxr202.github.io/img/flutter/flutter_bg_02.jpeg">
+<meta property="article:published_time" content="2022-12-01T02:14:24.000Z">
+<meta property="article:modified_time" content="2022-12-01T03:27:18.794Z">
 <meta property="article:author" content="Jiang">
-<meta property="article:tag" content="Redux">
+<meta property="article:tag" content="flutter">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://jxr202.github.io/img/redux/redux_bg_01.jpeg">
+<meta name="twitter:image" content="http://jxr202.github.io/img/flutter/flutter_bg_02.jpeg">
   
   
   
-  <title>Redux 之 Middleware 及 Flutter Redux 介绍 - 先先的个人博客</title>
+  <title>Flutter插件中获取Activity - 先先的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,13 +209,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/redux/redux_bg_01.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/flutter/flutter_bg_02.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Redux 之 Middleware 及 Flutter Redux 介绍"></span>
+            <span id="subtitle" data-typed-text="Flutter插件中获取Activity"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-03 16:04" pubdate>
-          2022年11月3日 下午
+        <time datetime="2022-12-01 10:14" pubdate>
+          2022年12月1日 上午
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          2.8k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          12 分钟
+          24 分钟
         
       </span>
     
@@ -295,70 +295,39 @@
                 <div id="board">
                     <article class="post-content mx-auto">
                         <!-- SEO header -->
-                        <h1 style="display: none">Redux 之 Middleware 及 Flutter Redux 介绍</h1>
+                        <h1 style="display: none">Flutter插件中获取Activity</h1>
                         
                         
                         <div class="markdown-body">
                             
-                            <p><img src="/img/redux/redux_bg_01.jpeg" srcset="/img/loading.gif" lazyload></p>
-<br/>
+                            <p><img src="/img/flutter/flutter_bg_02.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">1、最近在做 Flutter 插件开发时，需要判断是否为折叠屏。<br><br>2、折叠屏的监听需要用到 Activity，故写下了这篇博客。<br></code></pre></td></tr></table></figure>
 
-<h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><blockquote>
-<p>在前一篇博客，我们介绍了 Redux 的基本概念，本次对内容进行提升。<br>传送门: <a href="https://jxr202.github.io/2022/10/27/redux/redux_001">https://jxr202.github.io/2022/10/27/redux/redux_001</a></p>
-</blockquote>
-<h3 id="二、概念介绍"><a href="#二、概念介绍" class="headerlink" title="二、概念介绍"></a>二、概念介绍</h3><table>
-<thead>
-<tr>
-<th align="left">对象</th>
-<th align="left">库</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>Store</strong></td>
-<td align="left">Redux</td>
-<td align="left">数据集合、仓库，内部包含了 Reducer、State、Middleware</td>
-</tr>
-<tr>
-<td align="left"><strong>Action</strong></td>
-<td align="left">Redux</td>
-<td align="left">一种用于触发 State 变化的动作或行为</td>
-</tr>
-<tr>
-<td align="left"><strong>Reducer</strong></td>
-<td align="left">Redux</td>
-<td align="left">纯函数，约束 State 的变化，根据 Action 得出新的 State</td>
-</tr>
-<tr>
-<td align="left"><strong>State</strong></td>
-<td align="left">Redux</td>
-<td align="left">UI 状态，不同的 State 意味着不同的 UI</td>
-</tr>
-<tr>
-<td align="left"><strong>Middleware</strong></td>
-<td align="left">Redux</td>
-<td align="left">中间件，类似于拦截器，在 Action 到 Reducer 之前进行拦截</td>
-</tr>
-<tr>
-<td align="left"><strong>StoreProvider</strong></td>
-<td align="left">Flutter_Redux</td>
-<td align="left">继承于 InheritedWidget，用于 Store 的注入</td>
-</tr>
-<tr>
-<td align="left"><strong>StoreConnector</strong></td>
-<td align="left">Flutter_Redux</td>
-<td align="left">用于关联 Store 和 Widget，实现自动刷新</td>
-</tr>
-</tbody></table>
-<h3 id="三、StoreProvider"><a href="#三、StoreProvider" class="headerlink" title="三、StoreProvider"></a>三、StoreProvider</h3><ul>
-<li><p>StoreProvider 通常用于 Store 的注入，即 App 的入口的地方。</p>
- <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">void</span> <span class="hljs-title function_ invoke__">main</span>() &#123;<br>  <span class="hljs-keyword">final</span> store = Store&lt;AppState&gt;(counterReducer, initialState: <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">AppState</span>.<span class="hljs-title function_ invoke__">initState</span>());<br>  <span class="hljs-title function_ invoke__">runApp</span>(<span class="hljs-title function_ invoke__">MyApp</span>(store));<br>&#125;<br>    <br><span class="hljs-comment">/// MyApp -&gt; build()</span><br>@override<br>Widget <span class="hljs-title function_ invoke__">build</span>(BuildContext context) &#123;<br>  <span class="hljs-keyword">return</span> StoreProvider&lt;AppState&gt;(<br>    store: store,<br>    child: <span class="hljs-title function_ invoke__">MaterialApp</span>(<br>      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Flutter Demo&#x27;</span>,<br>      <span class="hljs-attr">theme</span>: <span class="hljs-title function_ invoke__">ThemeData</span>(<br>        <span class="hljs-attr">primarySwatch</span>: Colors.blue,<br>      ),<br>      <span class="hljs-attr">home</span>: <span class="hljs-keyword">const</span> <span class="hljs-title function_ invoke__">HomePage</span>(<span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Flutter Demo Home Page&#x27;</span>),<br>    ),<br>  );<br>&#125;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="四、StoreConnector"><a href="#四、StoreConnector" class="headerlink" title="四、StoreConnector"></a>四、StoreConnector</h3><ul>
-<li><p>StoreConnector 用于接收 Store 中的 State 变化，然后局部刷新 UI。</p>
+<h2 id="1、Flutter-低版本"><a href="#1、Flutter-低版本" class="headerlink" title="1、Flutter 低版本"></a>1、Flutter 低版本</h2><ul>
+<li><p>在低版本的 <code>Flutter</code> 中可以通过 <code>registerWith(Registrar registrar)</code> 方法获取</p>
 </li>
-<li><p>尽量缩小 StoreConnector 的范围，优化 UI 的绘制流程</p>
-  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php">body: <span class="hljs-title function_ invoke__">Center</span>(<br>  <span class="hljs-attr">child</span>: <span class="hljs-title function_ invoke__">Column</span>(<br>    <span class="hljs-attr">mainAxisAlignment</span>: MainAxisAlignment.center,<br>    <span class="hljs-attr">children</span>: [<br>      <span class="hljs-keyword">const</span> <span class="hljs-title function_ invoke__">Text</span>(<span class="hljs-string">&#x27;You have pushed the button this many times:&#x27;</span>),<br>      StoreConnector&lt;AppState, <span class="hljs-keyword">int</span>&gt;(<br>        <span class="hljs-attr">converter</span>: (store) =&gt; store.state.count,<br>        <span class="hljs-attr">builder</span>: (context, count) &#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">Text</span>(<br>            <span class="hljs-string">&#x27;$count&#x27;</span>,<br>            <span class="hljs-attr">style</span>: Theme.<span class="hljs-title function_ invoke__">of</span>(context).textTheme.displayLarge,<br>          );<br>        &#125;,<br>      ),<br>    ],<br>  ),<br>),<br></code></pre></td></tr></table></figure></li>
+<li><p><code>Android</code> 原生端代码:</p>
+</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-keyword">package</span> com.jiangxr.flutter_plugin<br><br><span class="hljs-keyword">import</span> android.app.Activity<br><span class="hljs-keyword">import</span> android.widget.Toast<br><span class="hljs-keyword">import</span> io.flutter.plugin.common.MethodCall<br><span class="hljs-keyword">import</span> io.flutter.plugin.common.MethodChannel<br><span class="hljs-keyword">import</span> io.flutter.plugin.common.MethodChannel.*<br><span class="hljs-keyword">import</span> io.flutter.plugin.common.PluginRegistry.Registrar<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">JPlugin</span>(registrar: Registrar) : MethodCallHandler &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> activity: Activity? = <span class="hljs-literal">null</span><br><br>  <span class="hljs-keyword">init</span> &#123;<br>    activity = registrar.activity()<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">registerWith</span><span class="hljs-params">(registrar: <span class="hljs-type">Registrar</span>)</span></span> &#123;<br>    <span class="hljs-keyword">val</span> channel = MethodChannel(registrar.messenger(), <span class="hljs-string">&quot;jiang_plugin&quot;</span>)<br>    channel.setMethodCallHandler(JPlugin(registrar))<br>  &#125;<br><br>  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onMethodCall</span><span class="hljs-params">(call: <span class="hljs-type">MethodCall</span>, result: <span class="hljs-type">Result</span>)</span></span> &#123;<br>    <span class="hljs-keyword">when</span> (call.method) &#123;<br>      <span class="hljs-string">&quot;getPlatformVersion&quot;</span> -&gt; &#123;<br>        result.success(<span class="hljs-string">&quot;Android <span class="hljs-subst">$&#123;android.os.Build.VERSION.RELEASE&#125;</span>&quot;</span>)<br>      &#125;<br>      <span class="hljs-string">&quot;showToast&quot;</span> -&gt; &#123;<br>        Toast.makeText(activity, <span class="hljs-string">&quot;Flutter 调用 Android 原生端 Toast&quot;</span>, Toast.LENGTH_SHORT).show()<br>      &#125;<br>      <span class="hljs-keyword">else</span> -&gt; &#123;<br>        result.notImplemented()<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>Flutter</code> 端的代码：</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;dart:async&#x27;</span>;<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/services.dart&#x27;</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlutterPlugin</span> </span>&#123;<br>  <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> MethodChannel _channel = MethodChannel(<span class="hljs-string">&#x27;jiang_plugin&#x27;</span>);<br><br>  <span class="hljs-keyword">static</span> Future&lt;<span class="hljs-built_in">String?</span>&gt; <span class="hljs-keyword">get</span> platformVersion <span class="hljs-keyword">async</span> &#123;<br>    <span class="hljs-keyword">final</span> <span class="hljs-built_in">String?</span> version = <span class="hljs-keyword">await</span> _channel.invokeMethod(<span class="hljs-string">&#x27;getPlatformVersion&#x27;</span>);<br>    <span class="hljs-keyword">return</span> version;<br>  &#125;<br><br>  <span class="hljs-keyword">static</span> Future&lt;<span class="hljs-keyword">void</span>&gt; <span class="hljs-keyword">get</span> showToast <span class="hljs-keyword">async</span> &#123;<br>    <span class="hljs-keyword">await</span> _channel.invokeMethod(<span class="hljs-string">&#x27;showToast&#x27;</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在 <code>Flutter</code> 中调用的时候直接使用 <code>await FlutterPluginDemo.showToast();</code> 即可</li>
+</ul>
+<h2 id="2、Flutter-高版本"><a href="#2、Flutter-高版本" class="headerlink" title="2、Flutter 高版本"></a>2、Flutter 高版本</h2><ul>
+<li><p>在 <code>Flutter</code> 高版本中直接通过实现 <code>ActivityAware</code> 接口拿到 <code>Activity</code></p>
+</li>
+<li><p>由于涉及隐私，这里只写了关键代码，代码如下：</p>
+</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-keyword">package</span> com.jiangxr.flutter_plugin<br><br><span class="hljs-keyword">import</span> android.app.Activity<br><span class="hljs-keyword">import</span> io.flutter.embedding.engine.plugins.activity.ActivityAware<br><span class="hljs-keyword">import</span> io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding<br><span class="hljs-keyword">import</span> io.flutter.plugin.common.MethodCall<br><span class="hljs-keyword">import</span> io.flutter.plugin.common.MethodChannel.*<br><span class="hljs-keyword">import</span> java.lang.ref.WeakReference<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">XPlugin</span> : <span class="hljs-type">MethodCallHandler</span>, <span class="hljs-type">ActivityAware</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> mActivity: WeakReference&lt;Activity&gt;? = <span class="hljs-literal">null</span><br><br>  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onMethodCall</span><span class="hljs-params">(call: <span class="hljs-type">MethodCall</span>, result: <span class="hljs-type">Result</span>)</span></span> &#123;<br>    TODO(<span class="hljs-string">&quot;Not yet implemented&quot;</span>)<br>  &#125;<br><br>  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onAttachedToActivity</span><span class="hljs-params">(binding: <span class="hljs-type">ActivityPluginBinding</span>)</span></span> &#123;<br>    mActivity = WeakReference(binding.activity)<br>  &#125;<br><br>  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onDetachedFromActivityForConfigChanges</span><span class="hljs-params">()</span></span> &#123;<br>    TODO(<span class="hljs-string">&quot;Not yet implemented&quot;</span>)<br>  &#125;<br><br>  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onReattachedToActivityForConfigChanges</span><span class="hljs-params">(binding: <span class="hljs-type">ActivityPluginBinding</span>)</span></span> &#123;<br>    TODO(<span class="hljs-string">&quot;Not yet implemented&quot;</span>)<br>  &#125;<br><br>  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onDetachedFromActivity</span><span class="hljs-params">()</span></span> &#123;<br>    mActivity = <span class="hljs-literal">null</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ul>
+<li>由于现阶段的 <code>Flutter</code> 版本一般都是2.x或3.x以上了，故基本上都用的第二种方案</li>
 </ul>
 
                             
@@ -410,17 +379,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Redux/" class="category-chain-item">Redux</a>
-  
-  
-
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%8E%9F%E5%88%9B/" class="category-chain-item">原创</a>
+  <a href="/categories/flutter/" class="category-chain-item">flutter</a>
   
   
 
@@ -435,7 +394,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Redux/">#Redux</a>
+        <a href="/tags/flutter/">#flutter</a>
       
     </div>
   
@@ -447,8 +406,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Redux 之 Middleware 及 Flutter Redux 介绍</div>
-      <div>http://jxr202.github.io/2022/11/03/redux/redux_002/</div>
+      <div>Flutter插件中获取Activity</div>
+      <div>http://jxr202.github.io/2022/12/01/flutter/flutter_002/</div>
     </div>
     <div class="license-meta">
       
@@ -460,7 +419,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年11月3日</div>
+          <div>2022年12月1日</div>
         </div>
       
       
@@ -492,9 +451,9 @@
                                 <article class="post-prev col-6">
                                     
                                     
-                                    <a href="/2022/11/17/reprint/reprint_004/" title="胡歌和杨幂，青春的故事">
+                                    <a href="/2022/12/01/flutter/flutter_003/" title="Flutter插件开发之折叠屏适配">
                                         <i class="iconfont icon-arrowleft"></i>
-                                        <span class="hidden-mobile">胡歌和杨幂，青春的故事</span>
+                                        <span class="hidden-mobile">Flutter插件开发之折叠屏适配</span>
                                         <span class="visible-mobile">上一篇</span>
                                     </a>
                                     
@@ -502,8 +461,8 @@
                                 <article class="post-next col-6">
                                     
                                     
-                                    <a href="/2022/10/27/redux/redux_001/" title="Redux 基本概念">
-                                        <span class="hidden-mobile">Redux 基本概念</span>
+                                    <a href="/2022/11/30/flutter/flutter_001/" title="Flutter插件开发">
+                                        <span class="hidden-mobile">Flutter插件开发</span>
                                         <span class="visible-mobile">下一篇</span>
                                         <i class="iconfont icon-arrowright"></i>
                                     </a>

@@ -16,24 +16,24 @@
   <meta name="author" content="Jiang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、前言 在前一篇博客，我们介绍了 Redux 的基本概念，本次对内容进行提升。传送门: https:&#x2F;&#x2F;jxr202.github.io&#x2F;2022&#x2F;10&#x2F;27&#x2F;redux&#x2F;redux_001  二、概念介绍   对象 库 说明    Store Redux 数据集合、仓库，内部包含了 Reducer、State、Middleware   Action Redux 一种用于触发 State">
+    <meta name="description" content="1、创建Package1flutter create --org com.jiangxr --template&#x3D;plugin --platforms&#x3D;android,ios -a kotlin -i swift flutter_plugin   解析:  用 Flutter 创建一个包名为 com.jiangxr.flutter_plugin 的插件库  其中平台信息为 android 和 io">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redux 之 Middleware 及 Flutter Redux 介绍">
-<meta property="og:url" content="http://jxr202.github.io/2022/11/03/redux/redux_002/index.html">
+<meta property="og:title" content="Flutter插件开发">
+<meta property="og:url" content="http://jxr202.github.io/2022/11/30/flutter/flutter_001/index.html">
 <meta property="og:site_name" content="先先的个人博客">
-<meta property="og:description" content="一、前言 在前一篇博客，我们介绍了 Redux 的基本概念，本次对内容进行提升。传送门: https:&#x2F;&#x2F;jxr202.github.io&#x2F;2022&#x2F;10&#x2F;27&#x2F;redux&#x2F;redux_001  二、概念介绍   对象 库 说明    Store Redux 数据集合、仓库，内部包含了 Reducer、State、Middleware   Action Redux 一种用于触发 State">
+<meta property="og:description" content="1、创建Package1flutter create --org com.jiangxr --template&#x3D;plugin --platforms&#x3D;android,ios -a kotlin -i swift flutter_plugin   解析:  用 Flutter 创建一个包名为 com.jiangxr.flutter_plugin 的插件库  其中平台信息为 android 和 io">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://jxr202.github.io/img/redux/redux_bg_01.jpeg">
-<meta property="article:published_time" content="2022-11-03T08:04:50.000Z">
-<meta property="article:modified_time" content="2022-11-03T09:11:17.102Z">
+<meta property="og:image" content="http://jxr202.github.io/img/flutter/flutter_bg_01.jpeg">
+<meta property="article:published_time" content="2022-11-30T08:09:11.000Z">
+<meta property="article:modified_time" content="2022-12-01T02:12:55.907Z">
 <meta property="article:author" content="Jiang">
-<meta property="article:tag" content="Redux">
+<meta property="article:tag" content="flutter">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://jxr202.github.io/img/redux/redux_bg_01.jpeg">
+<meta name="twitter:image" content="http://jxr202.github.io/img/flutter/flutter_bg_01.jpeg">
   
   
   
-  <title>Redux 之 Middleware 及 Flutter Redux 介绍 - 先先的个人博客</title>
+  <title>Flutter插件开发 - 先先的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,13 +209,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/redux/redux_bg_01.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/flutter/flutter_bg_01.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Redux 之 Middleware 及 Flutter Redux 介绍"></span>
+            <span id="subtitle" data-typed-text="Flutter插件开发"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-03 16:04" pubdate>
-          2022年11月3日 下午
+        <time datetime="2022-11-30 16:09" pubdate>
+          2022年11月30日 下午
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          606 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          12 分钟
+          6 分钟
         
       </span>
     
@@ -295,70 +295,36 @@
                 <div id="board">
                     <article class="post-content mx-auto">
                         <!-- SEO header -->
-                        <h1 style="display: none">Redux 之 Middleware 及 Flutter Redux 介绍</h1>
+                        <h1 style="display: none">Flutter插件开发</h1>
                         
                         
                         <div class="markdown-body">
                             
-                            <p><img src="/img/redux/redux_bg_01.jpeg" srcset="/img/loading.gif" lazyload></p>
-<br/>
+                            <p><img src="/img/flutter/flutter_bg_01.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1、创建Package"><a href="#1、创建Package" class="headerlink" title="1、创建Package"></a>1、创建Package</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">flutter create <span class="hljs-attr">--org</span> com<span class="hljs-selector-class">.jiangxr</span> <span class="hljs-attr">--template</span>=plugin <span class="hljs-attr">--platforms</span>=android,ios -<span class="hljs-selector-tag">a</span> kotlin -<span class="hljs-selector-tag">i</span> swift flutter_plugin<br></code></pre></td></tr></table></figure>
 
-<h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><blockquote>
-<p>在前一篇博客，我们介绍了 Redux 的基本概念，本次对内容进行提升。<br>传送门: <a href="https://jxr202.github.io/2022/10/27/redux/redux_001">https://jxr202.github.io/2022/10/27/redux/redux_001</a></p>
-</blockquote>
-<h3 id="二、概念介绍"><a href="#二、概念介绍" class="headerlink" title="二、概念介绍"></a>二、概念介绍</h3><table>
-<thead>
-<tr>
-<th align="left">对象</th>
-<th align="left">库</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>Store</strong></td>
-<td align="left">Redux</td>
-<td align="left">数据集合、仓库，内部包含了 Reducer、State、Middleware</td>
-</tr>
-<tr>
-<td align="left"><strong>Action</strong></td>
-<td align="left">Redux</td>
-<td align="left">一种用于触发 State 变化的动作或行为</td>
-</tr>
-<tr>
-<td align="left"><strong>Reducer</strong></td>
-<td align="left">Redux</td>
-<td align="left">纯函数，约束 State 的变化，根据 Action 得出新的 State</td>
-</tr>
-<tr>
-<td align="left"><strong>State</strong></td>
-<td align="left">Redux</td>
-<td align="left">UI 状态，不同的 State 意味着不同的 UI</td>
-</tr>
-<tr>
-<td align="left"><strong>Middleware</strong></td>
-<td align="left">Redux</td>
-<td align="left">中间件，类似于拦截器，在 Action 到 Reducer 之前进行拦截</td>
-</tr>
-<tr>
-<td align="left"><strong>StoreProvider</strong></td>
-<td align="left">Flutter_Redux</td>
-<td align="left">继承于 InheritedWidget，用于 Store 的注入</td>
-</tr>
-<tr>
-<td align="left"><strong>StoreConnector</strong></td>
-<td align="left">Flutter_Redux</td>
-<td align="left">用于关联 Store 和 Widget，实现自动刷新</td>
-</tr>
-</tbody></table>
-<h3 id="三、StoreProvider"><a href="#三、StoreProvider" class="headerlink" title="三、StoreProvider"></a>三、StoreProvider</h3><ul>
-<li><p>StoreProvider 通常用于 Store 的注入，即 App 的入口的地方。</p>
- <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">void</span> <span class="hljs-title function_ invoke__">main</span>() &#123;<br>  <span class="hljs-keyword">final</span> store = Store&lt;AppState&gt;(counterReducer, initialState: <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">AppState</span>.<span class="hljs-title function_ invoke__">initState</span>());<br>  <span class="hljs-title function_ invoke__">runApp</span>(<span class="hljs-title function_ invoke__">MyApp</span>(store));<br>&#125;<br>    <br><span class="hljs-comment">/// MyApp -&gt; build()</span><br>@override<br>Widget <span class="hljs-title function_ invoke__">build</span>(BuildContext context) &#123;<br>  <span class="hljs-keyword">return</span> StoreProvider&lt;AppState&gt;(<br>    store: store,<br>    child: <span class="hljs-title function_ invoke__">MaterialApp</span>(<br>      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Flutter Demo&#x27;</span>,<br>      <span class="hljs-attr">theme</span>: <span class="hljs-title function_ invoke__">ThemeData</span>(<br>        <span class="hljs-attr">primarySwatch</span>: Colors.blue,<br>      ),<br>      <span class="hljs-attr">home</span>: <span class="hljs-keyword">const</span> <span class="hljs-title function_ invoke__">HomePage</span>(<span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Flutter Demo Home Page&#x27;</span>),<br>    ),<br>  );<br>&#125;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="四、StoreConnector"><a href="#四、StoreConnector" class="headerlink" title="四、StoreConnector"></a>四、StoreConnector</h3><ul>
-<li><p>StoreConnector 用于接收 Store 中的 State 变化，然后局部刷新 UI。</p>
+<ul>
+<li><p>解析:</p>
 </li>
-<li><p>尽量缩小 StoreConnector 的范围，优化 UI 的绘制流程</p>
-  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php">body: <span class="hljs-title function_ invoke__">Center</span>(<br>  <span class="hljs-attr">child</span>: <span class="hljs-title function_ invoke__">Column</span>(<br>    <span class="hljs-attr">mainAxisAlignment</span>: MainAxisAlignment.center,<br>    <span class="hljs-attr">children</span>: [<br>      <span class="hljs-keyword">const</span> <span class="hljs-title function_ invoke__">Text</span>(<span class="hljs-string">&#x27;You have pushed the button this many times:&#x27;</span>),<br>      StoreConnector&lt;AppState, <span class="hljs-keyword">int</span>&gt;(<br>        <span class="hljs-attr">converter</span>: (store) =&gt; store.state.count,<br>        <span class="hljs-attr">builder</span>: (context, count) &#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">Text</span>(<br>            <span class="hljs-string">&#x27;$count&#x27;</span>,<br>            <span class="hljs-attr">style</span>: Theme.<span class="hljs-title function_ invoke__">of</span>(context).textTheme.displayLarge,<br>          );<br>        &#125;,<br>      ),<br>    ],<br>  ),<br>),<br></code></pre></td></tr></table></figure></li>
+<li><p>用 <code>Flutter</code> 创建一个包名为 <code>com.jiangxr.flutter_plugin</code> 的插件库</p>
+</li>
+<li><p>其中平台信息为 <code>android</code> 和 <code>ios</code>，语言分别为 <code>kotlin</code> 和 <code>swift</code></p>
+</li>
+</ul>
+<h2 id="2、用-Android-Studio-打开项目"><a href="#2、用-Android-Studio-打开项目" class="headerlink" title="2、用 Android Studio 打开项目"></a>2、用 Android Studio 打开项目</h2><ul>
+<li><p>用 Android Studio 打开刚刚创建的文件夹 <code>flutter_plugin</code></p>
+</li>
+<li><p>发现 <code>main.dart</code>、<code>flutter_plugin.dart</code> 显示都正常，但 <code>FlutterPlugin.kt</code> 文件不正常，很多红叉，如图:</p>
+</li>
+<li><p><img src="/img/flutter/flutter_001.jpg" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>这时候，点击右上角的 <code>Open for Editing in Android Studio</code> 在新的窗口打开，等同步完成，即能正常进行开发</p>
+</li>
+</ul>
+<h3 id="3、参考资料（官网）"><a href="#3、参考资料（官网）" class="headerlink" title="3、参考资料（官网）"></a>3、参考资料（官网）</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://flutter.cn/docs/development/packages-and-plugins/developing-packages">https://flutter.cn/docs/development/packages-and-plugins/developing-packages</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.flutter.dev/development/packages-and-plugins/developing-packages#dart">https://docs.flutter.dev/development/packages-and-plugins/developing-packages#dart</a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.flutterchina.club/developing-packages/#plugin">https://doc.flutterchina.club/developing-packages/#plugin</a></li>
 </ul>
 
                             
@@ -410,17 +376,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Redux/" class="category-chain-item">Redux</a>
-  
-  
-
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%8E%9F%E5%88%9B/" class="category-chain-item">原创</a>
+  <a href="/categories/flutter/" class="category-chain-item">flutter</a>
   
   
 
@@ -435,7 +391,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Redux/">#Redux</a>
+        <a href="/tags/flutter/">#flutter</a>
       
     </div>
   
@@ -447,8 +403,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Redux 之 Middleware 及 Flutter Redux 介绍</div>
-      <div>http://jxr202.github.io/2022/11/03/redux/redux_002/</div>
+      <div>Flutter插件开发</div>
+      <div>http://jxr202.github.io/2022/11/30/flutter/flutter_001/</div>
     </div>
     <div class="license-meta">
       
@@ -460,7 +416,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年11月3日</div>
+          <div>2022年11月30日</div>
         </div>
       
       
@@ -492,9 +448,9 @@
                                 <article class="post-prev col-6">
                                     
                                     
-                                    <a href="/2022/11/17/reprint/reprint_004/" title="胡歌和杨幂，青春的故事">
+                                    <a href="/2022/12/01/flutter/flutter_002/" title="Flutter插件中获取Activity">
                                         <i class="iconfont icon-arrowleft"></i>
-                                        <span class="hidden-mobile">胡歌和杨幂，青春的故事</span>
+                                        <span class="hidden-mobile">Flutter插件中获取Activity</span>
                                         <span class="visible-mobile">上一篇</span>
                                     </a>
                                     
@@ -502,8 +458,8 @@
                                 <article class="post-next col-6">
                                     
                                     
-                                    <a href="/2022/10/27/redux/redux_001/" title="Redux 基本概念">
-                                        <span class="hidden-mobile">Redux 基本概念</span>
+                                    <a href="/2022/11/17/reprint/reprint_004/" title="胡歌和杨幂，青春的故事">
+                                        <span class="hidden-mobile">胡歌和杨幂，青春的故事</span>
                                         <span class="visible-mobile">下一篇</span>
                                         <i class="iconfont icon-arrowright"></i>
                                     </a>
