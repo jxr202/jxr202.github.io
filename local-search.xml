@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Android动态更换ICON方案</title>
+    <link href="/2022/12/02/android/android_001/"/>
+    <url>/2022/12/02/android/android_001/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/android/android_bg_001.jpeg"></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stata">细心的用户会发现，一到某些节日如双11，某些网购平台的<span class="hljs-keyword">App</span>会自动更换其Logo。<br><br>事实上这是一个很古老的技术点，但如果控制不好，会带来一定的风险。<br><br>本人在年末便有一个这样的需求，需要在过年期间自动更换为新年Logo<br></code></pre></td></tr></table></figure><h2 id="1、技术原理"><a href="#1、技术原理" class="headerlink" title="1、技术原理"></a>1、技术原理</h2><ul><li>技术原理很简单，就是给App配置多个入口，然后通过 <code>enabled</code> 属性来控制入口的显示和隐藏。</li><li>一种方案是配置多个入口 <code>Activity</code>。</li><li>另一种方案是给 <code>Activity</code> 配置 <code>&lt;activity-alias&gt;</code>，这和第一种方案类似，但又有不同。</li></ul><h2 id="2、activity-alias-方案"><a href="#2、activity-alias-方案" class="headerlink" title="2、activity-alias 方案"></a>2、activity-alias 方案</h2><h3 id="2-1、配置桌面入口"><a href="#2-1、配置桌面入口" class="headerlink" title="2.1、配置桌面入口"></a>2.1、配置桌面入口</h3><ul><li>以下为 <code>AndroidManifest.xml</code> 中的代码片段：</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 原 ICON 对应的 Activity --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">activity</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.SplashActivity&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:enabled</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:exported</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:icon</span>=<span class="hljs-string">&quot;@mipmap/ic_launcher&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:theme</span>=<span class="hljs-string">&quot;@style/AppLauncherTheme&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">activity</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 节日 ICON --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">activity-alias</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.Special&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:enabled</span>=<span class="hljs-string">&quot;false&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:exported</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:icon</span>=<span class="hljs-string">&quot;@mipmap/ic_festival&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:targetActivity</span>=<span class="hljs-string">&quot;.SplashActivity&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:theme</span>=<span class="hljs-string">&quot;@style/AppLauncherTheme&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">activity-alias</span>&gt;</span><br></code></pre></td></tr></table></figure><ul><li>从代码中可以看出，我们从 <code>Launcher</code> 启动的是 <code>SplashActivity</code>。</li><li>通过 <code>activity-alias</code> 配置了一个 <code>Special</code> 代作为活动时的入口，其对应的 <code>android:targetActivity</code> 仍然是原来的 <code>SplashActivity</code></li><li>由于配置了 <code>android:enabled=&quot;false&quot;</code>，故在桌面上只会显示一个图标。</li></ul><h3 id="2-2、代码调用"><a href="#2-2、代码调用" class="headerlink" title="2.2、代码调用"></a>2.2、代码调用</h3><ul><li>在节日触发的地方需要更换对应的图标。</li></ul><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs Kotlin"><span class="hljs-keyword">val</span> pm = packageManager<br><span class="hljs-keyword">val</span> sp = getSharedPreferences(<span class="hljs-string">&quot;logo_special&quot;</span>, MODE_PRIVATE)<br><span class="hljs-keyword">val</span> isSpecial = sp.getString(<span class="hljs-string">&quot;isSpecial&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br><span class="hljs-keyword">val</span> componentDefault = ComponentName(packageName, <span class="hljs-string">&quot;<span class="hljs-variable">$packageName</span>.SplashActivity&quot;</span>)<br><span class="hljs-keyword">val</span> componentSpecial = ComponentName(packageName, <span class="hljs-string">&quot;<span class="hljs-variable">$packageName</span>.Special&quot;</span>)<br><span class="hljs-keyword">if</span> (isSpecial != <span class="hljs-literal">null</span> &amp;&amp; isSpecial.isNotEmpty()) &#123;<br>  Log.i(tag, <span class="hljs-string">&quot;run Special Page..&quot;</span>)<br>  <span class="hljs-keyword">if</span> (pm.getComponentEnabledSetting(componentDefault) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED) &#123;<br>    pm.setComponentEnabledSetting(<br>      componentDefault,<br>      PackageManager.COMPONENT_ENABLED_STATE_DISABLED,<br>      PackageManager.DONT_KILL_APP<br>    )<br>    pm.setComponentEnabledSetting(<br>      componentSpecial,<br>      PackageManager.COMPONENT_ENABLED_STATE_ENABLED,<br>      PackageManager.DONT_KILL_APP<br>    )<br>  &#125;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  Log.i(tag, <span class="hljs-string">&quot;run Default Page..&quot;</span>)<br>  <span class="hljs-keyword">if</span> (pm.getComponentEnabledSetting(componentSpecial) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED) &#123;<br>    pm.setComponentEnabledSetting(<br>      componentSpecial,<br>      PackageManager.COMPONENT_ENABLED_STATE_DISABLED,<br>      PackageManager.DONT_KILL_APP<br>    )<br>    pm.setComponentEnabledSetting(<br>      componentDefault,<br>      PackageManager.COMPONENT_ENABLED_STATE_ENABLED,<br>      PackageManager.DONT_KILL_APP<br>    )<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure><ul><li>通过 <code>pm.setComponentEnabledSetting(component)</code> 来设置某一个 <code>Activity</code> 的 <code>android:enabled</code> 为 <code>true</code> 和 <code>false</code></li></ul><h2 id="3、风险点"><a href="#3、风险点" class="headerlink" title="3、风险点"></a>3、风险点</h2><h3 id="3-1、App自动退出"><a href="#3-1、App自动退出" class="headerlink" title="3.1、App自动退出"></a>3.1、App自动退出</h3><ul><li>通过调用该代码会发现，在切换 <code>Icon</code> 时会主动退出 App，且没有任何报错。</li><li>切换图标需要时间，大部分机型只需要3秒，某为的机型需要10秒。</li><li>切换图标的过程中，如果点击图标，无法正常打开 App，会提示应用未安装。</li></ul><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">提示: 针对自动退出问题，可以采用在程序退出或在后台时，进行Icon切换。</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>flutter</category>
+      
+      <category>Android</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Android、flutter</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Flutter插件开发之折叠屏适配</title>
     <link href="/2022/12/01/flutter/flutter_003/"/>
     <url>/2022/12/01/flutter/flutter_003/</url>
@@ -242,9 +269,9 @@
     
     <categories>
       
-      <category>原创</category>
-      
       <category>Git</category>
+      
+      <category>原创</category>
       
     </categories>
     
@@ -377,9 +404,9 @@
     
     <categories>
       
-      <category>mac</category>
-      
       <category>环境配置</category>
+      
+      <category>mac</category>
       
       <category>原创</category>
       
@@ -443,13 +470,13 @@
       
       <category>程序人生</category>
       
-      <category>Hexo</category>
-      
       <category>原创</category>
       
-      <category>Blog</category>
-      
       <category>逆天改命</category>
+      
+      <category>Hexo</category>
+      
+      <category>Blog</category>
       
     </categories>
     
