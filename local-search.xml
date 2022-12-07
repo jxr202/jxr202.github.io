@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>无处不在的感冒</title>
+    <link href="/2022/12/06/life/life_001/"/>
+    <url>/2022/12/06/life/life_001/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/life/life_bg_001.jpeg"></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">代码写得再好也解决不了感冒的问题。<br><br>这不，天气一转凉，身子立马吃不消了，感冒了。<br><br>今天主要聊一聊感冒的划分。<br></code></pre></td></tr></table></figure><h2 id="中医"><a href="#中医" class="headerlink" title="中医"></a>中医</h2><ul><li>感冒了第一时间想到的是去药店买药。</li><li>店里的伙计会根据感冒症状推荐给你风寒感冒和风热感冒药。</li></ul><h4 id="风寒感冒"><a href="#风寒感冒" class="headerlink" title="风寒感冒"></a>风寒感冒</h4><ul><li>风寒感冒是指感受风寒之邪引发。(何为 <code>风寒之邪</code> ? 反正我是看不懂)</li><li>常见的症状有鼻塞、流清鼻涕、打喷嚏、怕冷比较重、发热比较轻、咽痒、咳嗽以及咳白稀痰、舌淡红、苔薄白等</li><li>治疗方法主要是宣肺解表、祛风散寒，比如黄金败毒散、正柴胡颗粒麻黄汤、桂枝汤、感冒清热颗粒疏散风寒等</li></ul><h4 id="风热感冒"><a href="#风热感冒" class="headerlink" title="风热感冒"></a>风热感冒</h4><ul><li>风热感冒是由感受风热之邪引起。(何为 <code>风热之邪</code> ? 反正我是看不懂)</li><li>常见的症状有鼻塞、流黄脓鼻涕、咽喉肿痛、发热比较重、怕冷比较轻、咳嗽、咳黄黏痰，痰黏稠，不容易咳出来，以及小便黄、大便干、舌淡红、苔薄黄等</li><li>治疗上用银翘散加减，或者连花清瘟胶囊、金花清感颗粒等具有疏散风热、解表功效的药物进行治疗</li></ul><h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul><li>不管是 <code>风寒之邪</code> 还是 <code>风热之邪</code>，我都看不懂，说了等于白说。</li><li>另外，<code>鼻塞</code> 和 <code>咳嗽</code> 等多个症状一样的，怎么分也分不出来。</li><li>按我个人理解，<code>风寒</code> 是轻度感冒，后期会自动转为 <code>风热</code>。</li></ul><h2 id="西医"><a href="#西医" class="headerlink" title="西医"></a>西医</h2><ul><li>感冒如果吃药两天都没好，大部分人都会向医院跑吧，反正我是这样。</li><li>到了三甲医院，挂号等叫号，叫到了2话不说，先让你抽一管血化验。</li><li>等化验单出来，医生随便看看，稍微问一下情况就给开药了。</li><li>这时你会发现，医生根本不管你是什么 <code>风寒</code> 还是 <code>风热</code>，只会写 <code>急性上呼吸道感染</code>。</li><li>事实上，<code>急性上呼吸道感染</code> 也有许多门道，分为了 <code>病毒型</code> 和 <code>细菌型</code>。</li></ul><h4 id="病毒型和细菌型"><a href="#病毒型和细菌型" class="headerlink" title="病毒型和细菌型"></a>病毒型和细菌型</h4><ul><li>事实上，<code>80%</code> 左右的 <code>上呼吸道感染</code> 为 <code>病毒型</code></li><li>血常规 <code>白细胞正常或是下降</code>，则为 <code>病毒型</code>。反之，<code>白细胞增高</code> 和 <code>中性粒细胞增高</code>，则为 <code>细菌型</code>。</li><li><code>咽部明显充血</code>、<code>扁桃体有脓性分泌物</code> 则会细菌型。</li></ul><h4 id="急性上呼吸道感染诱发因素"><a href="#急性上呼吸道感染诱发因素" class="headerlink" title="急性上呼吸道感染诱发因素"></a>急性上呼吸道感染诱发因素</h4><ul><li>淋雨、受凉、气候突变、过度疲劳</li><li>贫血、维生素A、D缺乏等</li><li>老年、体弱、幼儿等免疫功能低下</li><li>慢性呼吸道疾病患者</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li>不管是 <code>风寒</code> 还是 <code>风热</code>，<code>病毒型</code> 还是 <code>细菌型</code>，早点好起来才是王道。</li><li>现在疫情严重，感冒都会担心是否为 <code>阳性</code>。</li><li>希望快快好起来吧。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>程序人生</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>程序人生</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Android动态更换ICON方案</title>
     <link href="/2022/12/02/android/android_001/"/>
     <url>/2022/12/02/android/android_001/</url>
@@ -13,9 +38,9 @@
     
     <categories>
       
-      <category>flutter</category>
-      
       <category>Android</category>
+      
+      <category>flutter</category>
       
     </categories>
     
@@ -404,9 +429,9 @@
     
     <categories>
       
-      <category>环境配置</category>
-      
       <category>mac</category>
+      
+      <category>环境配置</category>
       
       <category>原创</category>
       
@@ -437,11 +462,11 @@
       
       <category>mba</category>
       
+      <category>逆天改命</category>
+      
       <category>原创</category>
       
       <category>数学</category>
-      
-      <category>逆天改命</category>
       
     </categories>
     
@@ -470,13 +495,13 @@
       
       <category>程序人生</category>
       
-      <category>原创</category>
-      
-      <category>逆天改命</category>
-      
       <category>Hexo</category>
       
       <category>Blog</category>
+      
+      <category>逆天改命</category>
+      
+      <category>原创</category>
       
     </categories>
     
