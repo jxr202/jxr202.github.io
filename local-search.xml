@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Mac系统安装Maven私服</title>
+    <link href="/2022/12/12/maven/maven_001/"/>
+    <url>/2022/12/12/maven/maven_001/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/maven/maven_bg_001.jpeg"></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">事实上，Maven私有库的搭建一般归属后端人员来操作。<br><br>但在小公司这些知识需要移动端开发人员甚至项目经理来处理。<br></code></pre></td></tr></table></figure><h2 id="一、Maven-私服介绍"><a href="#一、Maven-私服介绍" class="headerlink" title="一、Maven 私服介绍"></a>一、Maven 私服介绍</h2><ul><li>私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。</li><li>当 <code>Maven</code> 需要下载组件时，直接向其私服发起请求。</li><li>若 <code>Maven</code> 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库</li></ul><h2 id="二、通过终端命令安装"><a href="#二、通过终端命令安装" class="headerlink" title="二、通过终端命令安装"></a>二、通过终端命令安装</h2><h3 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h3><ul><li>如图，终端输入 <code>brew install nexus</code>。</li><li>如果提示没有 <code>brew</code> 命令需要先安装 <code>brew</code>。</li></ul><p><img src="/img/maven/maven_001.jpg"></p><ul><li>很明显，在 <code>M1</code> 系列芯片的机器上，这种方式安装失败了（本台电脑的芯片是 <code>M1 Pro</code>）。</li></ul><h3 id="2、启动"><a href="#2、启动" class="headerlink" title="2、启动"></a>2、启动</h3><ul><li>终端输入 <code>brew services start nexus</code> 启动 <code>Maven</code>。</li><li>在浏览器打开 <code>127.0.0.1:8081/nexus</code></li><li>默认账号密码为 <code>admin/admin123</code></li></ul><h2 id="三、通过-Nexus-安装"><a href="#三、通过-Nexus-安装" class="headerlink" title="三、通过 Nexus 安装"></a>三、通过 Nexus 安装</h2><h3 id="1、下载-Nexus"><a href="#1、下载-Nexus" class="headerlink" title="1、下载 Nexus"></a>1、下载 Nexus</h3><ul><li>传送门：<a href="http://www.sonatype.com/download-oss-sonatype%E3%80%82">http://www.sonatype.com/download-oss-sonatype。</a></li><li>很慢，要用梯子。</li><li>下载完成后，解压文件夹放在指定目标。</li></ul><h3 id="2、启动-1"><a href="#2、启动-1" class="headerlink" title="2、启动"></a>2、启动</h3><ul><li>在终端输入 <code>nexus-3.42.0-01/bin/nexus start</code></li><li>在浏览器输入 <code>http://localhost:8081/</code> 即可打开 <code>Maven</code> 页面，如下图</li><li>首次登录的账号为 <code>admin</code>，密码为一串随机密码，可以通过登录页的提示，打开指定文件看到，很长。</li></ul><p><img src="/img/maven/maven_002.jpg"></p><h3 id="3、其他命令"><a href="#3、其他命令" class="headerlink" title="3、其他命令"></a>3、其他命令</h3><ul><li>启动服务 <code>./nexus start</code></li><li>查看状态 <code>./nexus status</code></li><li>停止服务 <code>./nexus stop</code></li></ul><h2 id="四、Maven-仓库说明"><a href="#四、Maven-仓库说明" class="headerlink" title="四、Maven 仓库说明"></a>四、Maven 仓库说明</h2><h3 id="1、仓库说明"><a href="#1、仓库说明" class="headerlink" title="1、仓库说明"></a>1、仓库说明</h3><table><thead><tr><th align="left">仓库</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">maven-central</td><td align="left">maven中央库，默认从<a href="https://repo1.maven.org/maven2/%E6%8B%89%E5%8F%96jar">https://repo1.maven.org/maven2/拉取jar</a></td></tr><tr><td align="left">maven-public</td><td align="left">仓库分组，把上面三个仓库组合在一起对外提供服务，在本地maven基础配置settings.xml或项目pom.xml中使用</td></tr><tr><td align="left">maven-releases</td><td align="left">私库发行版jar，初次安装请将Deployment policy设置为Allow redeploy</td></tr><tr><td align="left">maven-snapshots</td><td align="left">私库快照（调试版本）jar</td></tr></tbody></table><h3 id="2、仓库类型"><a href="#2、仓库类型" class="headerlink" title="2、仓库类型"></a>2、仓库类型</h3><table><thead><tr><th align="left">仓库</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">Group</td><td align="left">这是一个仓库聚合的概念，用户仓库地址选择Group的地址，即可访问Group中配置的，用于方便开发人员自己设定的仓库。maven-public就是一个Group类型的仓库，内部设置了多个仓库，访问顺序取决于配置顺序，3.x默认Releases，Snapshots， Central，当然你也可以自己设置</td></tr><tr><td align="left">Hosted</td><td align="left">私有仓库，内部项目的发布仓库，专门用来存储我们自己生成的jar文件</td></tr><tr><td align="left">3rd party</td><td align="left">未发布到公网的第三方jar (3.x去除了)</td></tr><tr><td align="left">Snapshots</td><td align="left">本地项目的快照仓库</td></tr><tr><td align="left">Releases</td><td align="left">本地项目发布的正式版本</td></tr><tr><td align="left">Proxy</td><td align="left">代理类型，从远程中央仓库中寻找数据的仓库（可以点击对应的仓库的Configuration页签下Remote Storage属性的值即被代理的远程仓库的路径），如可配置阿里云maven仓库</td></tr><tr><td align="left">Central</td><td align="left">中央仓库</td></tr><tr><td align="left">Apache Snapshots</td><td align="left">Apache专用快照仓库(3.x去除了)</td></tr></tbody></table><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ul><li>这里有一份更加详细的步骤说明：</li><li><a href="https://blog.csdn.net/liaowenxiong/article/details/122598964">https://blog.csdn.net/liaowenxiong/article/details/122598964</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Android</category>
+      
+      <category>Maven</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Android、Maven</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>无处不在的感冒</title>
     <link href="/2022/12/06/life/life_001/"/>
     <url>/2022/12/06/life/life_001/</url>
@@ -38,9 +65,9 @@
     
     <categories>
       
-      <category>Android</category>
-      
       <category>flutter</category>
+      
+      <category>Android</category>
       
     </categories>
     
@@ -165,9 +192,9 @@
     
     <categories>
       
-      <category>Redux</category>
-      
       <category>原创</category>
+      
+      <category>Redux</category>
       
     </categories>
     
@@ -192,9 +219,9 @@
     
     <categories>
       
-      <category>Redux</category>
-      
       <category>原创</category>
+      
+      <category>Redux</category>
       
     </categories>
     
@@ -460,11 +487,11 @@
     
     <categories>
       
+      <category>原创</category>
+      
       <category>mba</category>
       
       <category>逆天改命</category>
-      
-      <category>原创</category>
       
       <category>数学</category>
       
@@ -497,11 +524,11 @@
       
       <category>Hexo</category>
       
+      <category>原创</category>
+      
       <category>Blog</category>
       
       <category>逆天改命</category>
-      
-      <category>原创</category>
       
     </categories>
     

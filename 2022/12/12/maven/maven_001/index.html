@@ -16,28 +16,24 @@
   <meta name="author" content="Jiang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、属性预览 下面展示的是本文的开头部分：  12345678910111213---title: Hexo 文章标签等属性简介index_img: &#x2F;img&#x2F;daocao01.jpegbanner_img: &#x2F;img&#x2F;daocao01.jpegdate: 2022-10-14 12:30:00tags: [Hexo, Blog, 原创, 程序人生, 逆天改命]categories:- [Hex">
+    <meta name="description" content="前言123事实上，Maven私有库的搭建一般归属后端人员来操作。但在小公司这些知识需要移动端开发人员甚至项目经理来处理。  一、Maven 私服介绍 私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。 当 Maven 需要下载组件时，直接向其私服发起请求。 若 Maven 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库  二、通过终端命令安装1、安装 如图，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 文章标签等属性简介">
-<meta property="og:url" content="http://jxr202.github.io/2022/10/14/hexo/Hexo%20%E6%96%87%E7%AB%A0%E6%A0%87%E7%AD%BE%E5%92%8C%E7%B1%BB%E5%88%AB%E7%AD%89%E5%B1%9E%E6%80%A7/index.html">
+<meta property="og:title" content="Mac系统安装Maven私服">
+<meta property="og:url" content="http://jxr202.github.io/2022/12/12/maven/maven_001/index.html">
 <meta property="og:site_name" content="先先的个人博客">
-<meta property="og:description" content="一、属性预览 下面展示的是本文的开头部分：  12345678910111213---title: Hexo 文章标签等属性简介index_img: &#x2F;img&#x2F;daocao01.jpegbanner_img: &#x2F;img&#x2F;daocao01.jpegdate: 2022-10-14 12:30:00tags: [Hexo, Blog, 原创, 程序人生, 逆天改命]categories:- [Hex">
+<meta property="og:description" content="前言123事实上，Maven私有库的搭建一般归属后端人员来操作。但在小公司这些知识需要移动端开发人员甚至项目经理来处理。  一、Maven 私服介绍 私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。 当 Maven 需要下载组件时，直接向其私服发起请求。 若 Maven 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库  二、通过终端命令安装1、安装 如图，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://jxr202.github.io/img/daocao01.jpeg">
-<meta property="article:published_time" content="2022-10-14T02:58:01.000Z">
-<meta property="article:modified_time" content="2022-10-14T06:14:28.989Z">
+<meta property="og:image" content="http://jxr202.github.io/img/maven/maven_bg_001.jpeg">
+<meta property="article:published_time" content="2022-12-12T03:00:50.000Z">
+<meta property="article:modified_time" content="2022-12-12T06:37:15.572Z">
 <meta property="article:author" content="Jiang">
-<meta property="article:tag" content="原创">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="Blog">
-<meta property="article:tag" content="程序人生">
-<meta property="article:tag" content="逆天改命">
+<meta property="article:tag" content="Android、Maven">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://jxr202.github.io/img/daocao01.jpeg">
+<meta name="twitter:image" content="http://jxr202.github.io/img/maven/maven_bg_001.jpeg">
   
   
   
-  <title>Hexo 文章标签等属性简介 - 先先的个人博客</title>
+  <title>Mac系统安装Maven私服 - 先先的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,13 +209,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/daocao01.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/maven/maven_bg_001.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hexo 文章标签等属性简介"></span>
+            <span id="subtitle" data-typed-text="Mac系统安装Maven私服"></span>
           
         </div>
 
@@ -230,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-14 10:58" pubdate>
-          2022年10月14日 上午
+        <time datetime="2022-12-12 11:00" pubdate>
+          2022年12月12日 上午
         </time>
       </span>
     
@@ -242,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.4k 字
         
       </span>
     
@@ -253,7 +249,7 @@
         
         
         
-          11 分钟
+          12 分钟
         
       </span>
     
@@ -299,71 +295,117 @@
                 <div id="board">
                     <article class="post-content mx-auto">
                         <!-- SEO header -->
-                        <h1 style="display: none">Hexo 文章标签等属性简介</h1>
+                        <h1 style="display: none">Mac系统安装Maven私服</h1>
                         
                         
                         <div class="markdown-body">
                             
-                            <p><img src="/img/daocao01.jpeg" srcset="/img/loading.gif" lazyload></p>
-<h1 id="一、属性预览"><a href="#一、属性预览" class="headerlink" title="一、属性预览"></a>一、属性预览</h1><ul>
-<li>下面展示的是本文的开头部分：</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">文章标签等属性简介</span><br><span class="hljs-attr">index_img:</span> <span class="hljs-string">/img/daocao01.jpeg</span><br><span class="hljs-attr">banner_img:</span> <span class="hljs-string">/img/daocao01.jpeg</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2022-10-14 12:30:00</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Blog</span>, <span class="hljs-string">原创</span>, <span class="hljs-string">程序人生</span>, <span class="hljs-string">逆天改命</span>]<br><span class="hljs-attr">categories:</span><br><span class="hljs-bullet">-</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Blog</span>]<br><span class="hljs-bullet">-</span> [<span class="hljs-string">逆天改命</span>]<br><span class="hljs-bullet">-</span> [<span class="hljs-string">程序人生</span>]<br><span class="hljs-bullet">-</span> [<span class="hljs-string">原创</span>]<br><span class="hljs-meta">---</span><br><span class="hljs-string">以下是文章内容</span><br></code></pre></td></tr></table></figure>
+                            <p><img src="/img/maven/maven_bg_001.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">事实上，Maven私有库的搭建一般归属后端人员来操作。<br><br>但在小公司这些知识需要移动端开发人员甚至项目经理来处理。<br></code></pre></td></tr></table></figure>
 
-<h1 id="二、图片"><a href="#二、图片" class="headerlink" title="二、图片"></a>二、图片</h1><h3 id="1、图片路径说明"><a href="#1、图片路径说明" class="headerlink" title="1、图片路径说明"></a>1、图片路径说明</h3><ul>
-<li>通常来说，<code>/img/xxx.jpg</code> 命名的图片位置对应的是 <code>fluid/source/img/xxx.jpg</code> 路径。但我们放在根目录的 <code>source</code> 下也行。</li>
-<li>本文是将 <code>daocao01.jpeg</code> 放在了根目录下的 <code>source/img/</code> 目录中。</li>
+<h2 id="一、Maven-私服介绍"><a href="#一、Maven-私服介绍" class="headerlink" title="一、Maven 私服介绍"></a>一、Maven 私服介绍</h2><ul>
+<li>私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。</li>
+<li>当 <code>Maven</code> 需要下载组件时，直接向其私服发起请求。</li>
+<li>若 <code>Maven</code> 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库</li>
 </ul>
-<h3 id="2、文章首页图片"><a href="#2、文章首页图片" class="headerlink" title="2、文章首页图片"></a>2、文章首页图片</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">index_img: <span class="hljs-regexp">/img/</span>daocao01.jpeg<br></code></pre></td></tr></table></figure>
-
+<h2 id="二、通过终端命令安装"><a href="#二、通过终端命令安装" class="headerlink" title="二、通过终端命令安装"></a>二、通过终端命令安装</h2><h3 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h3><ul>
+<li>如图，终端输入 <code>brew install nexus</code>。</li>
+<li>如果提示没有 <code>brew</code> 命令需要先安装 <code>brew</code>。</li>
+</ul>
+<p><img src="/img/maven/maven_001.jpg" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li><code>index_img</code> 属性标识着文章在首页列表展示时，所显示的图片，这个很好理解。</li>
+<li>很明显，在 <code>M1</code> 系列芯片的机器上，这种方式安装失败了（本台电脑的芯片是 <code>M1 Pro</code>）。</li>
 </ul>
-<h3 id="3、文章页面背景大图"><a href="#3、文章页面背景大图" class="headerlink" title="3、文章页面背景大图"></a>3、文章页面背景大图</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">banner_img: <span class="hljs-regexp">/img/</span>daocao01.jpeg<br></code></pre></td></tr></table></figure>
+<h3 id="2、启动"><a href="#2、启动" class="headerlink" title="2、启动"></a>2、启动</h3><ul>
+<li>终端输入 <code>brew services start nexus</code> 启动 <code>Maven</code>。</li>
+<li>在浏览器打开 <code>127.0.0.1:8081/nexus</code></li>
+<li>默认账号密码为 <code>admin/admin123</code></li>
+</ul>
+<h2 id="三、通过-Nexus-安装"><a href="#三、通过-Nexus-安装" class="headerlink" title="三、通过 Nexus 安装"></a>三、通过 Nexus 安装</h2><h3 id="1、下载-Nexus"><a href="#1、下载-Nexus" class="headerlink" title="1、下载 Nexus"></a>1、下载 Nexus</h3><ul>
+<li>传送门：<a target="_blank" rel="noopener" href="http://www.sonatype.com/download-oss-sonatype%E3%80%82">http://www.sonatype.com/download-oss-sonatype。</a></li>
+<li>很慢，要用梯子。</li>
+<li>下载完成后，解压文件夹放在指定目标。</li>
+</ul>
+<h3 id="2、启动-1"><a href="#2、启动-1" class="headerlink" title="2、启动"></a>2、启动</h3><ul>
+<li>在终端输入 <code>nexus-3.42.0-01/bin/nexus start</code></li>
+<li>在浏览器输入 <code>http://localhost:8081/</code> 即可打开 <code>Maven</code> 页面，如下图</li>
+<li>首次登录的账号为 <code>admin</code>，密码为一串随机密码，可以通过登录页的提示，打开指定文件看到，很长。</li>
+</ul>
+<p><img src="/img/maven/maven_002.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3、其他命令"><a href="#3、其他命令" class="headerlink" title="3、其他命令"></a>3、其他命令</h3><ul>
+<li>启动服务 <code>./nexus start</code></li>
+<li>查看状态 <code>./nexus status</code></li>
+<li>停止服务 <code>./nexus stop</code></li>
+</ul>
+<h2 id="四、Maven-仓库说明"><a href="#四、Maven-仓库说明" class="headerlink" title="四、Maven 仓库说明"></a>四、Maven 仓库说明</h2><h3 id="1、仓库说明"><a href="#1、仓库说明" class="headerlink" title="1、仓库说明"></a>1、仓库说明</h3><table>
+<thead>
+<tr>
+<th align="left">仓库</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">maven-central</td>
+<td align="left">maven中央库，默认从<a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/%E6%8B%89%E5%8F%96jar">https://repo1.maven.org/maven2/拉取jar</a></td>
+</tr>
+<tr>
+<td align="left">maven-public</td>
+<td align="left">仓库分组，把上面三个仓库组合在一起对外提供服务，在本地maven基础配置settings.xml或项目pom.xml中使用</td>
+</tr>
+<tr>
+<td align="left">maven-releases</td>
+<td align="left">私库发行版jar，初次安装请将Deployment policy设置为Allow redeploy</td>
+</tr>
+<tr>
+<td align="left">maven-snapshots</td>
+<td align="left">私库快照（调试版本）jar</td>
+</tr>
+</tbody></table>
+<h3 id="2、仓库类型"><a href="#2、仓库类型" class="headerlink" title="2、仓库类型"></a>2、仓库类型</h3><table>
+<thead>
+<tr>
+<th align="left">仓库</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Group</td>
+<td align="left">这是一个仓库聚合的概念，用户仓库地址选择Group的地址，即可访问Group中配置的，用于方便开发人员自己设定的仓库。maven-public就是一个Group类型的仓库，内部设置了多个仓库，访问顺序取决于配置顺序，3.x默认Releases，Snapshots， Central，当然你也可以自己设置</td>
+</tr>
+<tr>
+<td align="left">Hosted</td>
+<td align="left">私有仓库，内部项目的发布仓库，专门用来存储我们自己生成的jar文件</td>
+</tr>
+<tr>
+<td align="left">3rd party</td>
+<td align="left">未发布到公网的第三方jar (3.x去除了)</td>
+</tr>
+<tr>
+<td align="left">Snapshots</td>
+<td align="left">本地项目的快照仓库</td>
+</tr>
+<tr>
+<td align="left">Releases</td>
+<td align="left">本地项目发布的正式版本</td>
+</tr>
+<tr>
+<td align="left">Proxy</td>
+<td align="left">代理类型，从远程中央仓库中寻找数据的仓库（可以点击对应的仓库的Configuration页签下Remote Storage属性的值即被代理的远程仓库的路径），如可配置阿里云maven仓库</td>
+</tr>
+<tr>
+<td align="left">Central</td>
+<td align="left">中央仓库</td>
+</tr>
+<tr>
+<td align="left">Apache Snapshots</td>
+<td align="left">Apache专用快照仓库(3.x去除了)</td>
+</tr>
+</tbody></table>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ul>
+<li>这里有一份更加详细的步骤说明：</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/liaowenxiong/article/details/122598964">https://blog.csdn.net/liaowenxiong/article/details/122598964</a></li>
+</ul>
 
-<ul>
-<li><code>banner_img</code> 每篇文章开头部分都有一篇背景图，默认是海灯的那张，可以替换。</li>
-</ul>
-<h3 id="4、文章内图片引用"><a href="#4、文章内图片引用" class="headerlink" title="4、文章内图片引用"></a>4、文章内图片引用</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">![图片说明](<span class="hljs-regexp">/img/</span>daocao01.jpeg)<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>使用 <code>![](/img/xxx.jpg)</code> 来引用到文章内部，其中的中括号内可以写图片的一些说明。</li>
-</ul>
-<h1 id="三、标签"><a href="#三、标签" class="headerlink" title="三、标签"></a>三、标签</h1><ul>
-<li>标签 <code>tags</code> 这个属性不存在子标签，故没有顺序。下面两种方式都会生成三个不同类型的标签。</li>
-<li>方式一：</li>
-</ul>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">tags:</span> [Hexo, Blog, 原创]<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>方式二：</li>
-</ul>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">tags:</span><br>- Hexo<br>- Blog<br>- 原创<br></code></pre></td></tr></table></figure>
-
-<h1 id="四、类别"><a href="#四、类别" class="headerlink" title="四、类别"></a>四、类别</h1><ul>
-<li>类别 <code>categories</code> 这个属性和标签不一样，可以有子类别。以下方式会使得 <code>B</code> 成为 <code>A</code> 的子类别，而不是平级。</li>
-</ul>
-<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ldif"><span class="hljs-attribute">categories</span>:<br><span class="hljs-literal">-</span> A<br><span class="hljs-literal">-</span> B<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>我们可以使用如下方式来产生四个不同的类别。其产生了三个平级的类别，其中的 <code>Blog</code> 属于 <code>Hexo</code> 的子类。</li>
-</ul>
-<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">categories</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">[Hexo, Blog]</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">[逆天改命]</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">[程序人生]</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="五、摘要"><a href="#五、摘要" class="headerlink" title="五、摘要"></a>五、摘要</h1><h3 id="1、指定摘要"><a href="#1、指定摘要" class="headerlink" title="1、指定摘要"></a>1、指定摘要</h3><ul>
-<li>在文章头部，可以通过 <code>excerpt</code> 来指定摘要。摘要的主要作用是显示在主页的文章列表中。</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">文章标签等属性简介</span><br><span class="hljs-attr">excerpt:</span> <span class="hljs-string">我是摘要部分，显示在主页的列表中</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="2、自动摘要"><a href="#2、自动摘要" class="headerlink" title="2、自动摘要"></a>2、自动摘要</h3><ul>
-<li>在文章内部可以使用 <code>&lt;!-- more --&gt; </code> 来标识摘要。在该标签的前面部分被视为摘要。这种方式产生的摘要会被 <code>excerpt</code> 覆盖。</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml">文章内容xxx，摘要部分，显示在首页列表中。<br><span class="hljs-comment">&lt;!-- more --&gt;</span><br>文章内容xxx，不显示在首页列表。<br></code></pre></td></tr></table></figure>
-
-<h1 id="六、文章置顶"><a href="#六、文章置顶" class="headerlink" title="六、文章置顶"></a>六、文章置顶</h1><ul>
-<li>在文章头部，使用 <code>sticky</code> 来标识文章的优化级，值越大，文章越显示在前面部分，类似于置顶。</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">文章标签等属性简介</span><br><span class="hljs-attr">index_img:</span> <span class="hljs-string">/img/daocao01.jpeg</span><br><span class="hljs-attr">sticky:</span> <span class="hljs-number">100</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
                             
                         </div>
                         
@@ -413,7 +455,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/" class="category-chain-item">程序人生</a>
+  <a href="/categories/Android/" class="category-chain-item">Android</a>
   
   
 
@@ -423,34 +465,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Hexo/" class="category-chain-item">Hexo</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Hexo/Blog/" class="category-chain-item">Blog</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%8E%9F%E5%88%9B/" class="category-chain-item">原创</a>
-  
-  
-
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%80%86%E5%A4%A9%E6%94%B9%E5%91%BD/" class="category-chain-item">逆天改命</a>
+  <a href="/categories/Maven/" class="category-chain-item">Maven</a>
   
   
 
@@ -465,15 +480,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
-      
-        <a href="/tags/Hexo/">#Hexo</a>
-      
-        <a href="/tags/Blog/">#Blog</a>
-      
-        <a href="/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/">#程序人生</a>
-      
-        <a href="/tags/%E9%80%86%E5%A4%A9%E6%94%B9%E5%91%BD/">#逆天改命</a>
+        <a href="/tags/Android%E3%80%81Maven/">#Android、Maven</a>
       
     </div>
   
@@ -485,8 +492,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hexo 文章标签等属性简介</div>
-      <div>http://jxr202.github.io/2022/10/14/hexo/Hexo 文章标签和类别等属性/</div>
+      <div>Mac系统安装Maven私服</div>
+      <div>http://jxr202.github.io/2022/12/12/maven/maven_001/</div>
     </div>
     <div class="license-meta">
       
@@ -498,7 +505,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月14日</div>
+          <div>2022年12月12日</div>
         </div>
       
       
@@ -530,18 +537,12 @@
                                 <article class="post-prev col-6">
                                     
                                     
-                                    <a href="/2022/10/15/mba/2020%E5%B9%B4%E7%AE%A1%E7%90%86%E7%B1%BB%E8%81%94%E8%80%83%E6%95%B0%E5%AD%A6/" title="2020年管理类联考数学">
-                                        <i class="iconfont icon-arrowleft"></i>
-                                        <span class="hidden-mobile">2020年管理类联考数学</span>
-                                        <span class="visible-mobile">上一篇</span>
-                                    </a>
-                                    
                                 </article>
                                 <article class="post-next col-6">
                                     
                                     
-                                    <a href="/2022/10/13/Hexo-%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/" title="Hexo 多端同步">
-                                        <span class="hidden-mobile">Hexo 多端同步</span>
+                                    <a href="/2022/12/06/life/life_001/" title="无处不在的感冒">
+                                        <span class="hidden-mobile">无处不在的感冒</span>
                                         <span class="visible-mobile">下一篇</span>
                                         <i class="iconfont icon-arrowright"></i>
                                     </a>
