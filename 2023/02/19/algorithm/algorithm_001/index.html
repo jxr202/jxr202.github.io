@@ -16,24 +16,24 @@
   <meta name="author" content="Jiang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言123事实上，Maven私有库的搭建一般归属后端人员来操作。但在小公司这些知识需要移动端开发人员甚至项目经理来处理。  一、Maven 私服介绍 私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。 当 Maven 需要下载组件时，直接向其私服发起请求。 若 Maven 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库  二、通过终端命令安装1、安装 如图，">
+    <meta name="description" content="前言1经济萧条导致了移动端开发岗的减少，进而使得研发人员的竞争尤其激烈。算法，成为了面试大厂的必备条件。  知识点 双指针、动态规划  描述 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。   示例1 输入：[3， 1， 2， 5， 2， 4] 输出：5 说明：如上图，数组 [3， 1， 2， 5， 2， 4] 表示柱子高度，这种情况下可以接5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac系统安装Maven私服">
-<meta property="og:url" content="http://jxr202.github.io/2022/12/12/maven/maven_001/index.html">
+<meta property="og:title" content="经典算法题 - 接雨水">
+<meta property="og:url" content="http://jxr202.github.io/2023/02/19/algorithm/algorithm_001/index.html">
 <meta property="og:site_name" content="先先的个人博客">
-<meta property="og:description" content="前言123事实上，Maven私有库的搭建一般归属后端人员来操作。但在小公司这些知识需要移动端开发人员甚至项目经理来处理。  一、Maven 私服介绍 私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。 当 Maven 需要下载组件时，直接向其私服发起请求。 若 Maven 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库  二、通过终端命令安装1、安装 如图，">
+<meta property="og:description" content="前言1经济萧条导致了移动端开发岗的减少，进而使得研发人员的竞争尤其激烈。算法，成为了面试大厂的必备条件。  知识点 双指针、动态规划  描述 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。   示例1 输入：[3， 1， 2， 5， 2， 4] 输出：5 说明：如上图，数组 [3， 1， 2， 5， 2， 4] 表示柱子高度，这种情况下可以接5">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://jxr202.github.io/img/maven/maven_bg_001.jpeg">
-<meta property="article:published_time" content="2022-12-12T03:00:50.000Z">
-<meta property="article:modified_time" content="2022-12-12T06:37:15.572Z">
+<meta property="og:image" content="http://jxr202.github.io/img/algorithm/algorithm_bg_001.jpeg">
+<meta property="article:published_time" content="2023-02-19T13:58:32.000Z">
+<meta property="article:modified_time" content="2023-06-07T02:47:57.797Z">
 <meta property="article:author" content="Jiang">
-<meta property="article:tag" content="Android、Maven">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://jxr202.github.io/img/maven/maven_bg_001.jpeg">
+<meta name="twitter:image" content="http://jxr202.github.io/img/algorithm/algorithm_bg_001.jpeg">
   
   
   
-  <title>Mac系统安装Maven私服 - 先先的个人博客</title>
+  <title>经典算法题 - 接雨水 - 先先的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,13 +209,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/maven/maven_bg_001.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/algorithm/algorithm_bg_001.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Mac系统安装Maven私服"></span>
+            <span id="subtitle" data-typed-text="经典算法题 - 接雨水"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-12 11:00" pubdate>
-          2022年12月12日 上午
+        <time datetime="2023-02-19 21:58" pubdate>
+          2023年2月19日 晚上
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          841 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          12 分钟
+          8 分钟
         
       </span>
     
@@ -295,115 +295,40 @@
                 <div id="board">
                     <article class="post-content mx-auto">
                         <!-- SEO header -->
-                        <h1 style="display: none">Mac系统安装Maven私服</h1>
+                        <h1 style="display: none">经典算法题 - 接雨水</h1>
                         
                         
                         <div class="markdown-body">
                             
-                            <p><img src="/img/maven/maven_bg_001.jpeg" srcset="/img/loading.gif" lazyload></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">事实上，Maven私有库的搭建一般归属后端人员来操作。<br><br>但在小公司这些知识需要移动端开发人员甚至项目经理来处理。<br></code></pre></td></tr></table></figure>
+                            <p><img src="/img/algorithm/algorithm_bg_001.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">经济萧条导致了移动端开发岗的减少，进而使得研发人员的竞争尤其激烈。算法，成为了面试大厂的必备条件。<br></code></pre></td></tr></table></figure>
 
-<h2 id="一、Maven-私服介绍"><a href="#一、Maven-私服介绍" class="headerlink" title="一、Maven 私服介绍"></a>一、Maven 私服介绍</h2><ul>
-<li>私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。</li>
-<li>当 <code>Maven</code> 需要下载组件时，直接向其私服发起请求。</li>
-<li>若 <code>Maven</code> 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库</li>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>双指针、动态规划</li>
 </ul>
-<h2 id="二、通过终端命令安装"><a href="#二、通过终端命令安装" class="headerlink" title="二、通过终端命令安装"></a>二、通过终端命令安装</h2><h3 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h3><ul>
-<li>如图，终端输入 <code>brew install nexus</code>。</li>
-<li>如果提示没有 <code>brew</code> 命令需要先安装 <code>brew</code>。</li>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><ul>
+<li>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</li>
+<li><img src="/img/algorithm/algorithm_001.png" srcset="/img/loading.gif" lazyload></li>
 </ul>
-<p><img src="/img/maven/maven_001.jpg" srcset="/img/loading.gif" lazyload></p>
-<ul>
-<li>很明显，在 <code>M1</code> 系列芯片的机器上，这种方式安装失败了（本台电脑的芯片是 <code>M1 Pro</code>）。</li>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><ul>
+<li>输入：[3， 1， 2， 5， 2， 4]</li>
+<li>输出：5</li>
+<li>说明：如上图，数组 [3， 1， 2， 5， 2， 4] 表示柱子高度，这种情况下可以接5个单位的雨水，图中蓝色部分。</li>
 </ul>
-<h3 id="2、启动"><a href="#2、启动" class="headerlink" title="2、启动"></a>2、启动</h3><ul>
-<li>终端输入 <code>brew services start nexus</code> 启动 <code>Maven</code>。</li>
-<li>在浏览器打开 <code>127.0.0.1:8081/nexus</code></li>
-<li>默认账号密码为 <code>admin/admin123</code></li>
+<h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><ul>
+<li>输入：[4, 5, 1, 3, 2]</li>
+<li>输出：2</li>
 </ul>
-<h2 id="三、通过-Nexus-安装"><a href="#三、通过-Nexus-安装" class="headerlink" title="三、通过 Nexus 安装"></a>三、通过 Nexus 安装</h2><h3 id="1、下载-Nexus"><a href="#1、下载-Nexus" class="headerlink" title="1、下载 Nexus"></a>1、下载 Nexus</h3><ul>
-<li>传送门：<a target="_blank" rel="noopener" href="http://www.sonatype.com/download-oss-sonatype%E3%80%82">http://www.sonatype.com/download-oss-sonatype。</a></li>
-<li>很慢，要用梯子。</li>
-<li>下载完成后，解压文件夹放在指定目标。</li>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>这是典型的双针对问题。左指针指向左边，右指针指向右边。</li>
+<li>计算每一列可以存储的水量，这必然要有一个最值，减去当前格子的存水量，这个存水量最后要累加。</li>
+<li>如果左指针小，右指针向右移动，否则右指针向左移动，直到两指针相邻或相遇</li>
 </ul>
-<h3 id="2、启动-1"><a href="#2、启动-1" class="headerlink" title="2、启动"></a>2、启动</h3><ul>
-<li>在终端输入 <code>nexus-3.42.0-01/bin/nexus start</code></li>
-<li>在浏览器输入 <code>http://localhost:8081/</code> 即可打开 <code>Maven</code> 页面，如下图</li>
-<li>首次登录的账号为 <code>admin</code>，密码为一串随机密码，可以通过登录页的提示，打开指定文件看到，很长。</li>
-</ul>
-<p><img src="/img/maven/maven_002.jpg" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3、其他命令"><a href="#3、其他命令" class="headerlink" title="3、其他命令"></a>3、其他命令</h3><ul>
-<li>启动服务 <code>./nexus start</code></li>
-<li>查看状态 <code>./nexus status</code></li>
-<li>停止服务 <code>./nexus stop</code></li>
-</ul>
-<h2 id="四、Maven-仓库说明"><a href="#四、Maven-仓库说明" class="headerlink" title="四、Maven 仓库说明"></a>四、Maven 仓库说明</h2><h3 id="1、仓库说明"><a href="#1、仓库说明" class="headerlink" title="1、仓库说明"></a>1、仓库说明</h3><table>
-<thead>
-<tr>
-<th align="left">仓库</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">maven-central</td>
-<td align="left">maven中央库，默认从<a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/%E6%8B%89%E5%8F%96jar">https://repo1.maven.org/maven2/拉取jar</a></td>
-</tr>
-<tr>
-<td align="left">maven-public</td>
-<td align="left">仓库分组，把上面三个仓库组合在一起对外提供服务，在本地maven基础配置settings.xml或项目pom.xml中使用</td>
-</tr>
-<tr>
-<td align="left">maven-releases</td>
-<td align="left">私库发行版jar，初次安装请将Deployment policy设置为Allow redeploy</td>
-</tr>
-<tr>
-<td align="left">maven-snapshots</td>
-<td align="left">私库快照（调试版本）jar</td>
-</tr>
-</tbody></table>
-<h3 id="2、仓库类型"><a href="#2、仓库类型" class="headerlink" title="2、仓库类型"></a>2、仓库类型</h3><table>
-<thead>
-<tr>
-<th align="left">仓库</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Group</td>
-<td align="left">这是一个仓库聚合的概念，用户仓库地址选择Group的地址，即可访问Group中配置的，用于方便开发人员自己设定的仓库。maven-public就是一个Group类型的仓库，内部设置了多个仓库，访问顺序取决于配置顺序，3.x默认Releases，Snapshots， Central，当然你也可以自己设置</td>
-</tr>
-<tr>
-<td align="left">Hosted</td>
-<td align="left">私有仓库，内部项目的发布仓库，专门用来存储我们自己生成的jar文件</td>
-</tr>
-<tr>
-<td align="left">3rd party</td>
-<td align="left">未发布到公网的第三方jar (3.x去除了)</td>
-</tr>
-<tr>
-<td align="left">Snapshots</td>
-<td align="left">本地项目的快照仓库</td>
-</tr>
-<tr>
-<td align="left">Releases</td>
-<td align="left">本地项目发布的正式版本</td>
-</tr>
-<tr>
-<td align="left">Proxy</td>
-<td align="left">代理类型，从远程中央仓库中寻找数据的仓库（可以点击对应的仓库的Configuration页签下Remote Storage属性的值即被代理的远程仓库的路径），如可配置阿里云maven仓库</td>
-</tr>
-<tr>
-<td align="left">Central</td>
-<td align="left">中央仓库</td>
-</tr>
-<tr>
-<td align="left">Apache Snapshots</td>
-<td align="left">Apache专用快照仓库(3.x去除了)</td>
-</tr>
-</tbody></table>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ul>
-<li>这里有一份更加详细的步骤说明：</li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/liaowenxiong/article/details/122598964">https://blog.csdn.net/liaowenxiong/article/details/122598964</a></li>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 接雨水问题</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">arr</span>) &#123;<br>    <span class="hljs-comment">// 双指针，一左一右</span><br>    <span class="hljs-keyword">let</span> l = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> r = arr.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// 左右的最值</span><br>    <span class="hljs-keyword">let</span> maxL = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> maxR = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 结果</span><br>    <span class="hljs-keyword">let</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r) &#123;<br>        <span class="hljs-comment">// 左边的小</span><br>        <span class="hljs-keyword">if</span> (arr[l] &lt; arr[r]) &#123;<br>            <span class="hljs-comment">// 比最值小则需要累加存水量</span><br>            <span class="hljs-keyword">if</span> (arr[l] &lt; maxL) &#123;<br>                res += maxL - arr[l];<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-comment">// 否则替换最值</span><br>                maxL = arr[l];<br>            &#125;<br>            <span class="hljs-comment">// 左边的小则左指针向右移动</span><br>            l++;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 右边同理</span><br>            <span class="hljs-keyword">if</span> (arr[r] &lt; maxR) &#123;<br>                res += maxR - arr[r];<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                maxR = arr[r];<br>            &#125;<br>            r--;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>接雨水问题是字节最爱问的题，说是难度为困难，但其实根本达不到困难的级别</li>
+<li>掌握好双指针的思路，其实很好解。</li>
 </ul>
 
                             
@@ -455,17 +380,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Android/" class="category-chain-item">Android</a>
-  
-  
-
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Maven/" class="category-chain-item">Maven</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
 
@@ -480,7 +395,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Android%E3%80%81Maven/">#Android、Maven</a>
+        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
       
     </div>
   
@@ -492,8 +407,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Mac系统安装Maven私服</div>
-      <div>http://jxr202.github.io/2022/12/12/maven/maven_001/</div>
+      <div>经典算法题 - 接雨水</div>
+      <div>http://jxr202.github.io/2023/02/19/algorithm/algorithm_001/</div>
     </div>
     <div class="license-meta">
       
@@ -505,7 +420,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年12月12日</div>
+          <div>2023年2月19日</div>
         </div>
       
       
@@ -537,9 +452,9 @@
                                 <article class="post-prev col-6">
                                     
                                     
-                                    <a href="/2023/02/19/algorithm/algorithm_001/" title="经典算法题 - 接雨水">
+                                    <a href="/2023/02/20/algorithm/algorithm_002/" title="经典算法题 - 每日温度">
                                         <i class="iconfont icon-arrowleft"></i>
-                                        <span class="hidden-mobile">经典算法题 - 接雨水</span>
+                                        <span class="hidden-mobile">经典算法题 - 每日温度</span>
                                         <span class="visible-mobile">上一篇</span>
                                     </a>
                                     
@@ -547,8 +462,8 @@
                                 <article class="post-next col-6">
                                     
                                     
-                                    <a href="/2022/12/06/life/life_001/" title="无处不在的感冒">
-                                        <span class="hidden-mobile">无处不在的感冒</span>
+                                    <a href="/2022/12/12/maven/maven_001/" title="Mac系统安装Maven私服">
+                                        <span class="hidden-mobile">Mac系统安装Maven私服</span>
                                         <span class="visible-mobile">下一篇</span>
                                         <i class="iconfont icon-arrowright"></i>
                                     </a>
