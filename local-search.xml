@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Flutter 异常解决方案</title>
+    <link href="/2023/07/24/flutter/flutter_004/"/>
+    <url>/2023/07/24/flutter/flutter_004/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/flutter/flutter_bg_04.jpg"></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">这篇文章主要涉及 Flutter 项目运行时的各类问题<br></code></pre></td></tr></table></figure><h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><p>运行时报 <code>Android v1 embedding</code> 问题</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>The detected reason was:<br>  <span class="hljs-regexp">/Users/</span>jiangxr<span class="hljs-regexp">/Gitee/</span>Flutter_shop<span class="hljs-regexp">/android/</span>app<span class="hljs-regexp">/src/m</span>ain/AndroidManifest.xml uses `android:name=<span class="hljs-string">&quot;io.flutter.app.FlutterApplication&quot;</span>`<br>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>Build failed due to use of deprecated Android v1 embedding.<br></code></pre></td></tr></table></figure><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul><li><p>1、找到 <code>manifest</code> 文件中的 <code>application</code> 配置</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">application</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;io.flutter.app.FlutterApplication&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:label</span>=<span class="hljs-string">&quot;zdk_app&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:icon</span>=<span class="hljs-string">&quot;@mipmap/ic_launcher&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure></li><li><p>2、删除掉 <code>android:name</code> 属性</p><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">android:</span>name=<span class="hljs-string">&quot;io.flutter.app.FlutterApplication&quot;</span><br></code></pre></td></tr></table></figure></li><li><p>3、将如下 <code>&lt;meta-data&gt;</code> 插入到 <code>&lt;activity&gt;</code> 标签下</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta-data</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;flutterEmbedding&quot;</span> <span class="hljs-attr">android:value</span>=<span class="hljs-string">&quot;2&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>flutter</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>flutter</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>牛客算法题 NC1 - 大数加法</title>
     <link href="/2023/06/07/algorithm/nowcoder_001/"/>
     <url>/2023/06/07/algorithm/nowcoder_001/</url>
