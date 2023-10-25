@@ -4,11 +4,36 @@
   
   
   <entry>
+    <title>Flutter 值得学习的开源库</title>
+    <link href="/2023/10/25/flutter/flutter_006/"/>
+    <url>/2023/10/25/flutter/flutter_006/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/flutter/flutter_bg_01.jpeg"></p><h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><ul><li><p>最近在看 <code>Flutter</code> 社区的时候发现了好多个牛X的开源库</p></li><li><p>数据来源：<a href="https://flutter.cn/community/tutorials">https://flutter.cn/community/tutorials</a></p></li></ul><h2 id="1、贝壳团队出品的-Flutter-组件库-Bruno"><a href="#1、贝壳团队出品的-Flutter-组件库-Bruno" class="headerlink" title="1、贝壳团队出品的 Flutter 组件库 Bruno"></a>1、贝壳团队出品的 Flutter 组件库 Bruno</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">包含了多种组件库，其中的强引导组件相当 <span class="hljs-built_in">nice</span><br></code></pre></td></tr></table></figure><ul><li><p>文章：<a href="https://mp.weixin.qq.com/s/w69rkgC51nakbt52XMLadw">https://mp.weixin.qq.com/s/w69rkgC51nakbt52XMLadw</a></p></li><li><p>官网：<a href="https://bruno.ke.com/">https://bruno.ke.com/</a></p></li><li><p>Pub 地址：<a href="https://pub.flutter-io.cn/packages/bruno">https://pub.flutter-io.cn/packages/bruno</a></p></li><li><p>GitHub 仓库：<a href="https://github.com/LianjiaTech/bruno">https://github.com/LianjiaTech/bruno</a></p></li></ul><h2 id="2、字节跳动出品的-Flutter-应用内调试工具-UME"><a href="#2、字节跳动出品的-Flutter-应用内调试工具-UME" class="headerlink" title="2、字节跳动出品的 Flutter 应用内调试工具 UME"></a>2、字节跳动出品的 Flutter 应用内调试工具 UME</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">性能调试一直是重点<br></code></pre></td></tr></table></figure><ul><li><p>文章：<a href="https://mp.weixin.qq.com/s/opV122PL_snSicSqIkMP7w">https://mp.weixin.qq.com/s/opV122PL_snSicSqIkMP7w</a></p></li><li><p>Pub 地址：<a href="https://pub.flutter-io.cn/packages/flutter_ume">https://pub.flutter-io.cn/packages/flutter_ume</a></p></li><li><p>GitHub 仓库：<a href="https://github.com/bytedance/flutter_ume">https://github.com/bytedance/flutter_ume</a></p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>flutter</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>flutter</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Xcode 15 下载 iOS17 一直中断解决办法</title>
     <link href="/2023/10/23/flutter/flutter_005/"/>
     <url>/2023/10/23/flutter/flutter_005/</url>
     
-    <content type="html"><![CDATA[<p>1、问题描述<br>目前的 <code>Xcode 15</code> 安装时，跟以前有个差别：<br>以往的 <code>Xcode</code> 安装时自带了 <code>ide</code>、<code>sdk</code> 等工具包，安装后即可开始开发<br>而最新的包则被分开成了不同的包，<br>这里以 <code>ios</code> 开发包为例：<code>Xcode_15.zip</code> 和 <code>iOS_17_Simulator_Runtime.dmg</code></p><p>正常下载或更新好 <code>Xcode</code> 之后，<code>Xcode</code> 会提示你下载 <code>iOS17</code>，众所周知，<code>Xcode</code> 传统艺能是下载到一半提示你网络问题，且只能重头下载，甚是折磨。</p><p>2、解决办法<br>可以使用命令行的方式解决，具体步骤如下</p><p>首先在官网下载 <code>iOS_17_Simulator_Runtime.dmg</code> ，正常下载好之后是在 <code>Downloads</code> 文件夹</p><p>其次，下载好之后打开终端键入命令，注意路径</p><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gradle">sudo xcode-select -s <span class="hljs-regexp">/Applications/</span>Xcode.app<br><br>xcodebuild -runFirstLaunch<br><br>xcrun simctl <span class="hljs-keyword">runtime</span> add <span class="hljs-string">&quot;~/Downloads/iOS_17_Simulator_Runtime.dmg&quot;</span><br></code></pre></td></tr></table></figure><p>最后打开Xcode就已经安装完成了</p>]]></content>
+    <content type="html"><![CDATA[<p><img src="/img/flutter/flutter_bg_04.jpeg"></p><p>1、问题描述<br>目前的 <code>Xcode 15</code> 安装时，跟以前有个差别：<br>以往的 <code>Xcode</code> 安装时自带了 <code>ide</code>、<code>sdk</code> 等工具包，安装后即可开始开发<br>而最新的包则被分开成了不同的包，<br>这里以 <code>ios</code> 开发包为例：<code>Xcode_15.zip</code> 和 <code>iOS_17_Simulator_Runtime.dmg</code></p><p>正常下载或更新好 <code>Xcode</code> 之后，<code>Xcode</code> 会提示你下载 <code>iOS17</code>，众所周知，<code>Xcode</code> 传统艺能是下载到一半提示你网络问题，且只能重头下载，甚是折磨。</p><p>2、解决办法<br>可以使用命令行的方式解决，具体步骤如下</p><p>首先在官网下载 <code>iOS_17_Simulator_Runtime.dmg</code> ，正常下载好之后是在 <code>Downloads</code> 文件夹</p><p>其次，下载好之后打开终端键入命令，注意路径</p><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gradle">sudo xcode-select -s <span class="hljs-regexp">/Applications/</span>Xcode.app<br><br>xcodebuild -runFirstLaunch<br><br>xcrun simctl <span class="hljs-keyword">runtime</span> add <span class="hljs-string">&quot;~/Downloads/iOS_17_Simulator_Runtime.dmg&quot;</span><br></code></pre></td></tr></table></figure><p>最后打开Xcode就已经安装完成了</p>]]></content>
     
     
     <categories>
