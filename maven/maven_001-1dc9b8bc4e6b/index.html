@@ -1,0 +1,871 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言123事实上，Maven私有库的搭建一般归属后端人员来操作。但在小公司这些知识需要移动端开发人员甚至项目经理来处理。  一、Maven 私服介绍 私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。 当 Maven 需要下载组件时，直接向其私服发起请求。 若 Maven 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库  二、通过终端命令安装1、安装 如图，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac系统安装Maven私服">
+<meta property="og:url" content="http://jxr202.github.io/maven/maven_001-1dc9b8bc4e6b/index.html">
+<meta property="og:site_name" content="先先的个人博客">
+<meta property="og:description" content="前言123事实上，Maven私有库的搭建一般归属后端人员来操作。但在小公司这些知识需要移动端开发人员甚至项目经理来处理。  一、Maven 私服介绍 私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。 当 Maven 需要下载组件时，直接向其私服发起请求。 若 Maven 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库  二、通过终端命令安装1、安装 如图，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://jxr202.github.io/img/maven/maven_bg_001.jpeg">
+<meta property="article:published_time" content="2022-12-12T03:00:50.000Z">
+<meta property="article:modified_time" content="2022-12-12T06:37:15.572Z">
+<meta property="article:author" content="Jiang">
+<meta property="article:tag" content="Android、Maven">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://jxr202.github.io/img/maven/maven_bg_001.jpeg">
+  
+  
+  
+  <title>Mac系统安装Maven私服 - 先先的个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jxr202.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"UPhNKJPvzZF9bYu6JkHvkPGo-gzGzoHsz","app_key":"Xkr55uYyFhlXuwAiUn2UAydx","server_url":"https://uphnkjpv.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>先先的个人博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/maven/maven_bg_001.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Mac系统安装Maven私服"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-12 11:00" pubdate>
+          2022年12月12日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+    <div class="row nomargin-x">
+        <div class="side-col d-none d-lg-block col-lg-2">
+            
+
+        </div>
+
+        <div class="col-lg-8 nopadding-x-md">
+            <div class="container nopadding-x-md" id="board-ctn">
+                <div id="board">
+                    <article class="post-content mx-auto">
+                        <!-- SEO header -->
+                        <h1 style="display: none">Mac系统安装Maven私服</h1>
+                        
+                        
+                        <div class="markdown-body">
+                            
+                            <p><img src="/img/maven/maven_bg_001.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">事实上，Maven私有库的搭建一般归属后端人员来操作。<br><br>但在小公司这些知识需要移动端开发人员甚至项目经理来处理。<br></code></pre></td></tr></table></figure>
+
+<h2 id="一、Maven-私服介绍"><a href="#一、Maven-私服介绍" class="headerlink" title="一、Maven 私服介绍"></a>一、Maven 私服介绍</h2><ul>
+<li>私服是指架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方组件。</li>
+<li>当 <code>Maven</code> 需要下载组件时，直接向其私服发起请求。</li>
+<li>若 <code>Maven</code> 私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库</li>
+</ul>
+<h2 id="二、通过终端命令安装"><a href="#二、通过终端命令安装" class="headerlink" title="二、通过终端命令安装"></a>二、通过终端命令安装</h2><h3 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h3><ul>
+<li>如图，终端输入 <code>brew install nexus</code>。</li>
+<li>如果提示没有 <code>brew</code> 命令需要先安装 <code>brew</code>。</li>
+</ul>
+<p><img src="/img/maven/maven_001.jpg" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>很明显，在 <code>M1</code> 系列芯片的机器上，这种方式安装失败了（本台电脑的芯片是 <code>M1 Pro</code>）。</li>
+</ul>
+<h3 id="2、启动"><a href="#2、启动" class="headerlink" title="2、启动"></a>2、启动</h3><ul>
+<li>终端输入 <code>brew services start nexus</code> 启动 <code>Maven</code>。</li>
+<li>在浏览器打开 <code>127.0.0.1:8081/nexus</code></li>
+<li>默认账号密码为 <code>admin/admin123</code></li>
+</ul>
+<h2 id="三、通过-Nexus-安装"><a href="#三、通过-Nexus-安装" class="headerlink" title="三、通过 Nexus 安装"></a>三、通过 Nexus 安装</h2><h3 id="1、下载-Nexus"><a href="#1、下载-Nexus" class="headerlink" title="1、下载 Nexus"></a>1、下载 Nexus</h3><ul>
+<li>传送门：<a target="_blank" rel="noopener" href="http://www.sonatype.com/download-oss-sonatype%E3%80%82">http://www.sonatype.com/download-oss-sonatype。</a></li>
+<li>很慢，要用梯子。</li>
+<li>下载完成后，解压文件夹放在指定目标。</li>
+</ul>
+<h3 id="2、启动-1"><a href="#2、启动-1" class="headerlink" title="2、启动"></a>2、启动</h3><ul>
+<li>在终端输入 <code>nexus-3.42.0-01/bin/nexus start</code></li>
+<li>在浏览器输入 <code>http://localhost:8081/</code> 即可打开 <code>Maven</code> 页面，如下图</li>
+<li>首次登录的账号为 <code>admin</code>，密码为一串随机密码，可以通过登录页的提示，打开指定文件看到，很长。</li>
+</ul>
+<p><img src="/img/maven/maven_002.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3、其他命令"><a href="#3、其他命令" class="headerlink" title="3、其他命令"></a>3、其他命令</h3><ul>
+<li>启动服务 <code>./nexus start</code></li>
+<li>查看状态 <code>./nexus status</code></li>
+<li>停止服务 <code>./nexus stop</code></li>
+</ul>
+<h2 id="四、Maven-仓库说明"><a href="#四、Maven-仓库说明" class="headerlink" title="四、Maven 仓库说明"></a>四、Maven 仓库说明</h2><h3 id="1、仓库说明"><a href="#1、仓库说明" class="headerlink" title="1、仓库说明"></a>1、仓库说明</h3><table>
+<thead>
+<tr>
+<th align="left">仓库</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">maven-central</td>
+<td align="left">maven中央库，默认从<a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/%E6%8B%89%E5%8F%96jar">https://repo1.maven.org/maven2/拉取jar</a></td>
+</tr>
+<tr>
+<td align="left">maven-public</td>
+<td align="left">仓库分组，把上面三个仓库组合在一起对外提供服务，在本地maven基础配置settings.xml或项目pom.xml中使用</td>
+</tr>
+<tr>
+<td align="left">maven-releases</td>
+<td align="left">私库发行版jar，初次安装请将Deployment policy设置为Allow redeploy</td>
+</tr>
+<tr>
+<td align="left">maven-snapshots</td>
+<td align="left">私库快照（调试版本）jar</td>
+</tr>
+</tbody></table>
+<h3 id="2、仓库类型"><a href="#2、仓库类型" class="headerlink" title="2、仓库类型"></a>2、仓库类型</h3><table>
+<thead>
+<tr>
+<th align="left">仓库</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Group</td>
+<td align="left">这是一个仓库聚合的概念，用户仓库地址选择Group的地址，即可访问Group中配置的，用于方便开发人员自己设定的仓库。maven-public就是一个Group类型的仓库，内部设置了多个仓库，访问顺序取决于配置顺序，3.x默认Releases，Snapshots， Central，当然你也可以自己设置</td>
+</tr>
+<tr>
+<td align="left">Hosted</td>
+<td align="left">私有仓库，内部项目的发布仓库，专门用来存储我们自己生成的jar文件</td>
+</tr>
+<tr>
+<td align="left">3rd party</td>
+<td align="left">未发布到公网的第三方jar (3.x去除了)</td>
+</tr>
+<tr>
+<td align="left">Snapshots</td>
+<td align="left">本地项目的快照仓库</td>
+</tr>
+<tr>
+<td align="left">Releases</td>
+<td align="left">本地项目发布的正式版本</td>
+</tr>
+<tr>
+<td align="left">Proxy</td>
+<td align="left">代理类型，从远程中央仓库中寻找数据的仓库（可以点击对应的仓库的Configuration页签下Remote Storage属性的值即被代理的远程仓库的路径），如可配置阿里云maven仓库</td>
+</tr>
+<tr>
+<td align="left">Central</td>
+<td align="left">中央仓库</td>
+</tr>
+<tr>
+<td align="left">Apache Snapshots</td>
+<td align="left">Apache专用快照仓库(3.x去除了)</td>
+</tr>
+</tbody></table>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ul>
+<li>这里有一份更加详细的步骤说明：</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/liaowenxiong/article/details/122598964">https://blog.csdn.net/liaowenxiong/article/details/122598964</a></li>
+</ul>
+
+                            
+                        </div>
+                        
+                        <hr/>
+
+                        
+                        <!-- 添加打赏功能 -->
+<div class="post-donate" style="text-align: center">
+    <div id="donate_board" class="donate_bar center">
+        <span class="donate_txt" style="text-align: center">
+		   坚持做分享！如果感觉棒，请赏个铜板！
+        </span>
+        <input id="btn_donate"
+               type="button"
+               style="background-color: red; color: white; border: none; height=38; width=100"
+               value="打赏"/>
+        <br>
+    </div>
+    <div id="donate_guide" class="donate_bar center" style="display: none; margin-top: 30px">
+        <!-- 支付宝打赏图案 -->
+        <img src="/img/donate_alipay.png" srcset="/img/loading.gif" lazyload width="200" height="200" alt="支付宝打赏">
+        <!-- 微信打赏图案 -->
+        <img src="/img/donate_wechat.png" srcset="/img/loading.gif" lazyload width="200" height="200" alt="微信打赏" style="margin-left: 33px">
+    </div>
+    <script type="text/javascript">
+      document.getElementById('btn_donate').onclick = function () {
+        let qr = document.getElementById("donate_guide");
+        "none" === qr.style.display ? qr.style.display = "block" : qr.style.display = "none"
+      }
+    </script>
+</div>
+<!-- 添加打赏功能 -->
+
+                        
+                        <hr/>
+
+                        <div>
+                            <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Android/" class="category-chain-item">Android</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Maven/" class="category-chain-item">Maven</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Android%E3%80%81Maven/">#Android、Maven</a>
+      
+    </div>
+  
+</div>
+
+
+                            
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Mac系统安装Maven私服</div>
+      <div>http://jxr202.github.io/maven/maven_001-1dc9b8bc4e6b/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Jiang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+                            
+                            <div class="post-prevnext my-3">
+                                <article class="post-prev col-6">
+                                    
+                                    
+                                    <a href="/algorithm/algorithm_001-8db36b01b199/" title="经典算法题 - 接雨水">
+                                        <i class="iconfont icon-arrowleft"></i>
+                                        <span class="hidden-mobile">经典算法题 - 接雨水</span>
+                                        <span class="visible-mobile">上一篇</span>
+                                    </a>
+                                    
+                                </article>
+                                <article class="post-next col-6">
+                                    
+                                    
+                                    <a href="/life/life_001-9fe817e5c8f7/" title="无处不在的感冒">
+                                        <span class="hidden-mobile">无处不在的感冒</span>
+                                        <span class="visible-mobile">下一篇</span>
+                                        <i class="iconfont icon-arrowright"></i>
+                                    </a>
+                                    
+                                </article>
+                            </div>
+                            
+                        </div>
+
+                        
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UPhNKJPvzZF9bYu6JkHvkPGo-gzGzoHsz","appKey":"Xkr55uYyFhlXuwAiUn2UAydx","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://uphnkjpv.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-col d-none d-lg-block col-lg-2">
+            
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

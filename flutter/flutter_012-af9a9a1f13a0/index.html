@@ -1,0 +1,899 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jiang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言1和 Android 里的 Path 类似，Flutter 中也可以通过 Path 绘制图形...  1、moveTo(x, y) 和 lineTo(x, y) 先看代码  123456789101112131415161718192021222324252627282930313233343536import &amp;#x27;package:flutter&#x2F;material.dart&amp;#x27">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter Path 学习日记 (一)">
+<meta property="og:url" content="http://jxr202.github.io/flutter/flutter_012-af9a9a1f13a0/index.html">
+<meta property="og:site_name" content="先先的个人博客">
+<meta property="og:description" content="前言1和 Android 里的 Path 类似，Flutter 中也可以通过 Path 绘制图形...  1、moveTo(x, y) 和 lineTo(x, y) 先看代码  123456789101112131415161718192021222324252627282930313233343536import &amp;#x27;package:flutter&#x2F;material.dart&amp;#x27">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://jxr202.github.io/img/flutter/flutter_bg_12.jpeg">
+<meta property="article:published_time" content="2023-11-07T06:15:26.000Z">
+<meta property="article:modified_time" content="2023-11-08T06:14:49.113Z">
+<meta property="article:author" content="Jiang">
+<meta property="article:tag" content="flutter">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://jxr202.github.io/img/flutter/flutter_bg_12.jpeg">
+  
+  
+  
+  <title>Flutter Path 学习日记 (一) - 先先的个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jxr202.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"UPhNKJPvzZF9bYu6JkHvkPGo-gzGzoHsz","app_key":"Xkr55uYyFhlXuwAiUn2UAydx","server_url":"https://uphnkjpv.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>先先的个人博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/flutter/flutter_bg_12.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Flutter Path 学习日记 (一)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-07 14:15" pubdate>
+          2023年11月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          71 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+    <div class="row nomargin-x">
+        <div class="side-col d-none d-lg-block col-lg-2">
+            
+
+        </div>
+
+        <div class="col-lg-8 nopadding-x-md">
+            <div class="container nopadding-x-md" id="board-ctn">
+                <div id="board">
+                    <article class="post-content mx-auto">
+                        <!-- SEO header -->
+                        <h1 style="display: none">Flutter Path 学习日记 (一)</h1>
+                        
+                        
+                        <div class="markdown-body">
+                            
+                            <p><img src="/img/flutter/flutter_bg_12.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coq">和 Android 里的 <span class="hljs-keyword">Path</span> 类似，Flutter 中也可以通过 <span class="hljs-keyword">Path</span> 绘制图形...<br></code></pre></td></tr></table></figure>
+
+<h2 id="1、moveTo-x-y-和-lineTo-x-y"><a href="#1、moveTo-x-y-和-lineTo-x-y" class="headerlink" title="1、moveTo(x, y) 和 lineTo(x, y)"></a>1、moveTo(x, y) 和 lineTo(x, y)</h2><ul>
+<li>先看代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><br><span class="hljs-comment">/// <span class="language-markdown">Path 的 moveTo 和 lineTo</span></span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PathPage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-keyword">const</span> PathPage(&#123;<span class="hljs-keyword">super</span>.key&#125;);<br><br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> CustomPaint(painter: PathPainter());<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PathPainter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">CustomPainter</span> </span>&#123;<br>  <span class="hljs-keyword">final</span> Paint mPaint = Paint();<br>  <span class="hljs-keyword">final</span> Path mPath = Path();<br><br>  <span class="hljs-meta">@override</span><br>  <span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>    mPaint<br>      ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>      ..style = PaintingStyle.stroke<br>      ..strokeWidth = <span class="hljs-number">5</span>;<br><br>    <span class="hljs-comment">// 将画笔置于该坐标，即画笔起始点坐标</span><br>    mPath.moveTo(<span class="hljs-number">72</span>, size.height / <span class="hljs-number">4</span>);<br>    <span class="hljs-comment">// 将画笔画一条直线，到目标坐标</span><br>    mPath.lineTo(size.width - <span class="hljs-number">72</span>, size.height / <span class="hljs-number">2</span>);<br>    mPath.close();<br>    canvas.drawPath(mPath, mPaint);<br>  &#125;<br><br>  <span class="hljs-meta">@override</span><br>  <span class="hljs-built_in">bool</span> shouldRepaint(<span class="hljs-keyword">covariant</span> CustomPainter oldDelegate) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>我们可以通过在 <code>build</code> 方法中返回一个 <code>CustomPaint</code> 来实现自定义页面。</li>
+<li>我们可以通过继承 <code>CustomPainter</code> 来自定义一个类似于 <code>Android</code> 中自定义 <code>View</code> 的东西。</li>
+<li>继承 <code>CustomPainter</code> 需要重写两个关键方法，其中的 <code>paint</code> 方法内部可以自由绘制。</li>
+<li>注意，<code>Flutter</code> 和 <code>Android</code> 一样，坐标原点 <code>(0, 0)</code> 位于左上角，右和下为 <code>x</code>、<code>y</code> 轴的正方向。</li>
+<li>其中的 <code>moveTo</code> 即为将绘制的<code>起始点</code>移动到指定的位置</li>
+<li>而 <code>lineTo</code> 则为从<code>起点</code>画一条直线到<code>目标点</code></li>
+<li>以下为上述代码的效果图</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_01.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2、quadraticBezierTo-x1-y1-x2-y2"><a href="#2、quadraticBezierTo-x1-y1-x2-y2" class="headerlink" title="2、quadraticBezierTo(x1, y1, x2, y2)"></a>2、quadraticBezierTo(x1, y1, x2, y2)</h2><ul>
+<li><code>quadraticBezierTo(x1, y1, x2, y2)</code> 为绘制<code>二阶贝塞尔曲线</code></li>
+<li>其中 x1, y1 为控制点，x2, y2 为终点</li>
+<li><code>二阶贝塞尔曲线</code>除了起点和终点外，还有一个控制点，如下图</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_02.gif" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>以下为<code>贝塞尔曲线</code>绘制的关键代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br><span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>  mPaint<br>    ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>    ..style = PaintingStyle.stroke<br>    ..strokeWidth = <span class="hljs-number">5</span>;<br><br>  <span class="hljs-comment">// 将画笔置于该坐标，即画笔起始点坐标</span><br>  mPath.moveTo(<span class="hljs-number">0</span>, size.height / <span class="hljs-number">2</span>);<br>  <span class="hljs-comment">// 画二阶贝塞尔曲线，其中 x1, y1 为控制点，x2, y2 为终点</span><br>  mPath.quadraticBezierTo(size.width / <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, size.width, size.height / <span class="hljs-number">2</span>);<br><br>  canvas.drawPath(mPath, mPaint);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>以下为绘制出来的图形</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_03.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3、cubicTo-x1-y1-x2-y2-x3-y3"><a href="#3、cubicTo-x1-y1-x2-y2-x3-y3" class="headerlink" title="3、cubicTo(x1, y1, x2, y2, x3, y3)"></a>3、cubicTo(x1, y1, x2, y2, x3, y3)</h2><ul>
+<li><code>cubicTo(x1, y1, x2, y2, x3, y3)</code> 为绘制<code>三阶贝塞尔曲线</code></li>
+<li>其中 <code>(x1, y1)</code> 为控制点1，<code>(x2, y2)</code> 为控制点2，<code>(x3, y3)</code> 为终点</li>
+<li><code>三阶贝塞尔曲线</code>如下图</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_04.gif" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>以下为<code>三阶贝塞尔曲线</code>绘制的关键代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br><span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>  mPaint<br>    ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>    ..style = PaintingStyle.stroke<br>    ..strokeWidth = <span class="hljs-number">5</span>;<br><br>  <span class="hljs-comment">// 将画笔置于该坐标，即画笔起始点坐标</span><br>  mPath.moveTo(<span class="hljs-number">0</span>, size.height / <span class="hljs-number">2</span>);<br>  <span class="hljs-comment">// 三阶贝塞尔曲线，(x1, y1) 为控制点1，(x2, y2) 为控制点2</span><br>  mPath.cubicTo(<br>    size.width / <span class="hljs-number">4</span>,<br>    <span class="hljs-number">0</span>,<br>    size.width * <span class="hljs-number">3</span> / <span class="hljs-number">4</span>,<br>    size.height,<br>    size.width,<br>    size.height / <span class="hljs-number">2</span>,<br>  );<br>  canvas.drawPath(mPath, mPaint);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>以下为绘制出来的图形</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_05.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4、conicTo-x1-y1-x2-y2-weight"><a href="#4、conicTo-x1-y1-x2-y2-weight" class="headerlink" title="4、conicTo(x1, y1, x2, y2, weight)"></a>4、conicTo(x1, y1, x2, y2, weight)</h2><ul>
+<li><code>conicTo(x1, y1, x2, y2, weight)</code> 为绘制<code>圆锥曲线</code></li>
+<li>其中 <code>(x1, y1)</code> 为控制点，<code>(x2, y2)</code> 为终点，<code>weight</code> 类似于离心率</li>
+<li>当 <code>weight</code> 大于 1 时为 <code>双曲线</code></li>
+<li>当 <code>weight</code> 等于 1 时为 <code>抛物线</code></li>
+<li>当 <code>weight</code> 小于 1 时为 <code>椭圆</code></li>
+<li>以下为绘制的相关代码，分别绘制了离心率不同的三条线</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PathPainter4</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">CustomPainter</span> </span>&#123;<br>  <span class="hljs-keyword">final</span> Paint mPaint = Paint();<br>  <span class="hljs-keyword">final</span> Paint mPaint1 = Paint();<br>  <span class="hljs-keyword">final</span> Paint mPaint2 = Paint();<br>  <span class="hljs-keyword">final</span> Path mPath = Path();<br>  <span class="hljs-keyword">final</span> Path mPath1 = Path();<br>  <span class="hljs-keyword">final</span> Path mPath2 = Path();<br><br>  <span class="hljs-meta">@override</span><br>  <span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>    mPaint<br>      ..color = Colors.redAccent<br>      ..style = PaintingStyle.stroke<br>      ..strokeWidth = <span class="hljs-number">8</span>;<br>    mPaint1<br>      ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>      ..style = PaintingStyle.stroke<br>      ..strokeWidth = <span class="hljs-number">8</span>;<br>    mPaint2<br>      ..color = Colors.lightGreenAccent<br>      ..style = PaintingStyle.stroke<br>      ..strokeWidth = <span class="hljs-number">8</span>;<br><br>    <span class="hljs-comment">// 将画笔置于该坐标，即画笔起始点坐标</span><br>    mPath.moveTo(<span class="hljs-number">0</span>, size.height / <span class="hljs-number">2</span>);<br>    <span class="hljs-comment">// 绘制圆锥曲线，其中(x1, y1) 为控制点，最后的参数为离心率</span><br>    mPath.conicTo(size.width / <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, size.width, size.height / <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br><br>    <span class="hljs-comment">// 将画笔置于该坐标，即画笔起始点坐标</span><br>    mPath1.moveTo(<span class="hljs-number">0</span>, size.height / <span class="hljs-number">2</span>);<br>    <span class="hljs-comment">// 绘制圆锥曲线，其中(x1, y1) 为控制点，最后的参数为离心率</span><br>    mPath1.conicTo(size.width / <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, size.width, size.height / <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">// 将画笔置于该坐标，即画笔起始点坐标</span><br>    mPath2.moveTo(<span class="hljs-number">0</span>, size.height / <span class="hljs-number">2</span>);<br>    <span class="hljs-comment">// 绘制圆锥曲线，其中(x1, y1) 为控制点，最后的参数为离心率</span><br>    mPath2.conicTo(size.width / <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, size.width, size.height / <span class="hljs-number">2</span>, <span class="hljs-number">0.5</span>);<br><br>    canvas.drawPath(mPath, mPaint);<br>    canvas.drawPath(mPath1, mPaint1);<br>    canvas.drawPath(mPath2, mPaint2);<br>  &#125;<br><br>  <span class="hljs-meta">@override</span><br>  <span class="hljs-built_in">bool</span> shouldRepaint(<span class="hljs-keyword">covariant</span> CustomPainter oldDelegate) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>以下为绘制出来的图形</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_06.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5、arcTo-rect-startAngle-sweepAngle-forceMoveTo"><a href="#5、arcTo-rect-startAngle-sweepAngle-forceMoveTo" class="headerlink" title="5、arcTo(rect, startAngle, sweepAngle, forceMoveTo)"></a>5、arcTo(rect, startAngle, sweepAngle, forceMoveTo)</h2><ul>
+<li><code>arcTo(rect, startAngle, sweepAngle, forceMoveTo)</code> 为绘制 <code>圆弧</code></li>
+<li><code>rect</code> 圆弧外切矩形</li>
+<li><code>startAngle</code> 为起始角度，以经典坐标系的 x轴 为起始角度</li>
+<li><code>sweepAngle</code> 为扫过的弧度，和经典角度相反，顺时针为正弧度，逆时针为负弧度</li>
+<li><code>forceMoveTo</code> 是否强制移动过去</li>
+<li>以下为绘制的关键代码，注意参数是<code>弧度</code>，所以要用数据中的 <code>pai</code> 换算</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br><span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>  mPaint<br>    ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>    ..style = PaintingStyle.stroke<br>    ..strokeWidth = <span class="hljs-number">5</span>;<br><br>  <span class="hljs-keyword">final</span> Rect rect = Rect.fromLTRB(<span class="hljs-number">50</span>, <span class="hljs-number">50</span>, size.width - <span class="hljs-number">50</span>, size.height - <span class="hljs-number">50</span>);<br>  <br>  <span class="hljs-comment">// arcTo(rect, startAngle, sweepAngle, forceMoveTo)</span><br>  mPath.arcTo(rect, <span class="hljs-number">0</span>, <span class="hljs-number">90</span> * pi / <span class="hljs-number">180</span>, <span class="hljs-keyword">false</span>);<br><br>  canvas.drawPath(mPath, mPaint);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>以下为绘制出来的图形</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_07.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6、addRect-rect"><a href="#6、addRect-rect" class="headerlink" title="6、addRect(rect)"></a>6、addRect(rect)</h2><ul>
+<li><code>addRect(rect)</code> 为添加 <code>矩形</code>，矩形参数为 <code>rect</code></li>
+<li>需要注意的是，这里是 <code>addXxx</code> 方法，不再是 <code>xxxTo</code></li>
+<li>以下为绘制的关键代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br><span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>  mPaint<br>    ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>    ..style = PaintingStyle.stroke<br>    ..strokeWidth = <span class="hljs-number">5</span>;<br><br>  <span class="hljs-keyword">final</span> rect = Rect.fromLTRB(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>, size.width - <span class="hljs-number">100</span>, size.height - <span class="hljs-number">100</span>);<br><br>  mPath.addRect(rect);<br><br>  canvas.drawPath(mPath, mPaint);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>以下为绘制出来的图形</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_08.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="7、addRRect-rRect"><a href="#7、addRRect-rRect" class="headerlink" title="7、addRRect(rRect)"></a>7、addRRect(rRect)</h2><ul>
+<li><code>addRRect(rRect)</code> 为添加 <code>带弧度的矩形</code></li>
+<li>需要注意的是，这里是 <code>addXxx</code> 方法，不再是 <code>xxxTo</code></li>
+<li>以下为绘制的关键代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br><span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>  mPaint<br>    ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>    ..style = PaintingStyle.stroke<br>    ..strokeWidth = <span class="hljs-number">5</span>;<br><br>  <span class="hljs-keyword">final</span> rect = Rect.fromLTRB(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>, size.width - <span class="hljs-number">100</span>, size.height - <span class="hljs-number">100</span>);<br>  <span class="hljs-keyword">final</span> rRect = RRect.fromRectAndRadius(rect, <span class="hljs-keyword">const</span> Radius.circular(<span class="hljs-number">20</span>));<br>  mPath.addRRect(rRect);<br><br>  canvas.drawPath(mPath, mPaint);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>以下为绘制出来的图形</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_09.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="8、addOval-rect"><a href="#8、addOval-rect" class="headerlink" title="8、addOval(rect)"></a>8、addOval(rect)</h2><ul>
+<li><code>addOval(rect)</code> 为添加 <code>椭圆</code></li>
+<li>需要注意的是，这里是 <code>addXxx</code> 方法，不再是 <code>xxxTo</code></li>
+<li>以下为绘制的关键代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br><span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>  mPaint<br>    ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>    ..style = PaintingStyle.stroke<br>    ..strokeWidth = <span class="hljs-number">5</span>;<br><br>  <span class="hljs-keyword">final</span> rect = Rect.fromLTRB(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>, size.width - <span class="hljs-number">100</span>, size.height - <span class="hljs-number">100</span>);<br><br>  mPath.addOval(rect);<br><br>  canvas.drawPath(mPath, mPaint);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>以下为绘制出来的图形</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_10.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="9、addArc-rect-startAngle-sweepAngle"><a href="#9、addArc-rect-startAngle-sweepAngle" class="headerlink" title="9、addArc(rect, startAngle, sweepAngle)"></a>9、addArc(rect, startAngle, sweepAngle)</h2><ul>
+<li><code>addArc(rect, startAngle, sweepAngle)</code> 为添加 <code>圆弧</code></li>
+<li>需要注意的是，这里是 <code>addXxx</code> 方法，不再是 <code>xxxTo</code></li>
+<li>以下为绘制的关键代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br><span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>  mPaint<br>    ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>    ..style = PaintingStyle.stroke<br>    ..strokeWidth = <span class="hljs-number">5</span>;<br><br>  <span class="hljs-keyword">final</span> rect = Rect.fromLTRB(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>, size.width - <span class="hljs-number">100</span>, size.height - <span class="hljs-number">100</span>);<br><br>  mPath.addArc(rect, <span class="hljs-number">180</span> * pi / <span class="hljs-number">180</span>, <span class="hljs-number">90</span> * pi / <span class="hljs-number">180</span>);<br><br>  canvas.drawPath(mPath, mPaint);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>以下为绘制出来的图形</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_11.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="10、addPolygon-List-points-bool-close"><a href="#10、addPolygon-List-points-bool-close" class="headerlink" title="10、addPolygon(List points, bool close)"></a>10、addPolygon(List<Offset> points, bool close)</h2><ul>
+<li><code>addPolygon</code> 为添加 <code>多边形</code>，<code>close</code> 参数是是否闭环</li>
+<li>需要注意的是，这里是 <code>addXxx</code> 方法，不再是 <code>xxxTo</code></li>
+<li>以下为绘制的关键代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br><span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>  mPaint<br>    ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>    ..style = PaintingStyle.stroke<br>    ..strokeWidth = <span class="hljs-number">5</span>;<br><br>  mPath.addPolygon([<br>    <span class="hljs-keyword">const</span> Offset(<span class="hljs-number">50</span>, <span class="hljs-number">50</span>),<br>    <span class="hljs-keyword">const</span> Offset(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>),<br>    <span class="hljs-keyword">const</span> Offset(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>),<br>    <span class="hljs-keyword">const</span> Offset(<span class="hljs-number">300</span>, <span class="hljs-number">400</span>),<br>  ], <span class="hljs-keyword">true</span>);<br><br>  canvas.drawPath(mPath, mPaint);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>以下为绘制出来的图形</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_12.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="11、Path-绘制圆形进度条"><a href="#11、Path-绘制圆形进度条" class="headerlink" title="11、Path 绘制圆形进度条"></a>11、Path 绘制圆形进度条</h2><ul>
+<li>学习了这么多的方法，现在开始绘制一个圆形的进度条。</li>
+<li>直接上代码</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;dart:math&#x27;</span>;<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CircleBarPage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatefulWidget</span> </span>&#123;<br>  <span class="hljs-keyword">const</span> CircleBarPage(&#123;<span class="hljs-keyword">super</span>.key&#125;);<br><br>  <span class="hljs-meta">@override</span><br>  State&lt;CircleBarPage&gt; createState() =&gt; _CircleBarPageState();<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_CircleBarPageState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">CircleBarPage</span>&gt; <span class="hljs-title">with</span> <span class="hljs-title">SingleTickerProviderStateMixin</span> </span>&#123;<br>  <span class="hljs-comment">/// <span class="language-markdown">动画控制器</span></span><br>  <span class="hljs-keyword">late</span> AnimationController controller = AnimationController(<br>    vsync: <span class="hljs-keyword">this</span>,<br>    duration: <span class="hljs-keyword">const</span> <span class="hljs-built_in">Duration</span>(seconds: <span class="hljs-number">5</span>),<br>  );<br><br>  <span class="hljs-comment">/// <span class="language-markdown">动画</span></span><br>  <span class="hljs-keyword">late</span> Animation&lt;<span class="hljs-built_in">double</span>&gt; anim = Tween(begin: <span class="hljs-number">0.0</span>, end: <span class="hljs-number">360.0</span>).animate(controller);<br><br>  <span class="hljs-meta">@override</span><br>  <span class="hljs-keyword">void</span> initState() &#123;<br>    <span class="hljs-keyword">super</span>.initState();<br>    controller.addListener(() =&gt; setState(() &#123;&#125;));<br>    controller.forward(from: <span class="hljs-number">0.0</span>);<br>  &#125;<br><br>  <span class="hljs-meta">@override</span><br>  <span class="hljs-keyword">void</span> dispose() &#123;<br>    controller.dispose();<br>    <span class="hljs-keyword">super</span>.dispose();<br>  &#125;<br><br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">final</span> size = MediaQuery.of(context).size;<br>    <span class="hljs-keyword">final</span> width = size.width;<br>    <span class="hljs-keyword">final</span> height = size.height;<br>    <span class="hljs-keyword">return</span> Container(<br>      width: width,<br>      height: height,<br>      padding: <span class="hljs-keyword">const</span> EdgeInsets.all(<span class="hljs-number">30</span>),<br>      color: Colors.white,<br>      child: CustomPaint(<br>        painter: CircleBarPainter(anim.value),<br>        child: Center(<br>          child: Text(<br>            <span class="hljs-string">&#x27;<span class="hljs-subst">$&#123;(anim.value / <span class="hljs-number">3.6</span>).round()&#125;</span>&#x27;</span>,<br>            style: <span class="hljs-keyword">const</span> TextStyle(fontSize: <span class="hljs-number">30</span>, color: Colors.deepOrangeAccent),<br>          ),<br>        ),<br>      ),<br>    );<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CircleBarPainter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">CustomPainter</span> </span>&#123;<br>  <span class="hljs-keyword">final</span> Paint mPaint = Paint();<br>  <span class="hljs-keyword">final</span> Paint mPaint1 = Paint();<br>  <span class="hljs-keyword">final</span> Path mPath = Path();<br>  <span class="hljs-keyword">final</span> <span class="hljs-built_in">double</span> progress;<br><br>  CircleBarPainter(<span class="hljs-keyword">this</span>.progress) &#123;<br>    mPaint<br>      ..color = <span class="hljs-keyword">const</span> Color(<span class="hljs-number">0xFF0095FF</span>)<br>      ..style = PaintingStyle.stroke<br>      ..strokeCap = StrokeCap.round<br>      ..strokeWidth = <span class="hljs-number">8</span><br>      ..isAntiAlias = <span class="hljs-keyword">true</span>;<br>    mPaint1<br>      ..color = Colors.lightGreenAccent<br>      ..style = PaintingStyle.stroke<br>      ..strokeCap = StrokeCap.round<br>      ..strokeWidth = <span class="hljs-number">8</span><br>      ..isAntiAlias = <span class="hljs-keyword">true</span>;<br>  &#125;<br><br>  <span class="hljs-meta">@override</span><br>  <span class="hljs-keyword">void</span> paint(Canvas canvas, Size size) &#123;<br>    <span class="hljs-comment">// 控件中心坐标</span><br>    <span class="hljs-keyword">final</span> centerX = size.width / <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">final</span> centerY = size.height / <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">final</span> center = Offset(centerX, centerY);<br>    <span class="hljs-keyword">final</span> radius = centerX;<br><br>    <span class="hljs-comment">// 绘制进度条底色</span><br>    canvas.drawCircle(center, radius, mPaint);<br><br>    <span class="hljs-comment">// 进度条对应的矩形</span><br>    <span class="hljs-keyword">final</span> rect = Rect.fromCircle(center: center, radius: radius);<br><br>    <span class="hljs-comment">// 进度条从最上面开始算角度</span><br>    canvas.drawArc(rect, <span class="hljs-number">-90</span> * pi / <span class="hljs-number">180</span>, progress * pi / <span class="hljs-number">180</span>, <span class="hljs-keyword">false</span>, mPaint1);<br>  &#125;<br><br>  <span class="hljs-meta">@override</span><br>  <span class="hljs-built_in">bool</span> shouldRepaint(<span class="hljs-keyword">covariant</span> CustomPainter oldDelegate) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>通过 <code>AnimationController</code> 来控制动画时间为 5 秒</li>
+<li>通过 <code>Animation</code> 来创建一个 <code>Tween</code> 动画，进度为 0 到 360 度</li>
+<li>页面初始化的时候，添加监听，并跑动画 <code>controller.forward()</code></li>
+<li>在绘制的时候，先绘制一个底色圆</li>
+<li>再根据进度参数，绘制对应的圆形进度条</li>
+<li>以下为绘制出来的一个动画截图</li>
+</ul>
+<p><img src="/img/flutter/flutter_012_13.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="代码传送门"><a href="#代码传送门" class="headerlink" title="代码传送门"></a>代码传送门</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/jxr202/x_flutter_path">https://gitee.com/jxr202/x_flutter_path</a></li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/flutter-community/paths-in-flutter-a-visual-guide-6c906464dcd0">https://medium.com/flutter-community/paths-in-flutter-a-visual-guide-6c906464dcd0</a></li>
+</ul>
+
+                            
+                        </div>
+                        
+                        <hr/>
+
+                        
+                        <!-- 添加打赏功能 -->
+<div class="post-donate" style="text-align: center">
+    <div id="donate_board" class="donate_bar center">
+        <span class="donate_txt" style="text-align: center">
+		   坚持做分享！如果感觉棒，请赏个铜板！
+        </span>
+        <input id="btn_donate"
+               type="button"
+               style="background-color: red; color: white; border: none; height=38; width=100"
+               value="打赏"/>
+        <br>
+    </div>
+    <div id="donate_guide" class="donate_bar center" style="display: none; margin-top: 30px">
+        <!-- 支付宝打赏图案 -->
+        <img src="/img/donate_alipay.png" srcset="/img/loading.gif" lazyload width="200" height="200" alt="支付宝打赏">
+        <!-- 微信打赏图案 -->
+        <img src="/img/donate_wechat.png" srcset="/img/loading.gif" lazyload width="200" height="200" alt="微信打赏" style="margin-left: 33px">
+    </div>
+    <script type="text/javascript">
+      document.getElementById('btn_donate').onclick = function () {
+        let qr = document.getElementById("donate_guide");
+        "none" === qr.style.display ? qr.style.display = "block" : qr.style.display = "none"
+      }
+    </script>
+</div>
+<!-- 添加打赏功能 -->
+
+                        
+                        <hr/>
+
+                        <div>
+                            <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/flutter/" class="category-chain-item">flutter</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/flutter/">#flutter</a>
+      
+    </div>
+  
+</div>
+
+
+                            
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Flutter Path 学习日记 (一)</div>
+      <div>http://jxr202.github.io/flutter/flutter_012-af9a9a1f13a0/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Jiang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+                            
+                            <div class="post-prevnext my-3">
+                                <article class="post-prev col-6">
+                                    
+                                    
+                                </article>
+                                <article class="post-next col-6">
+                                    
+                                    
+                                    <a href="/flutter/flutter_011-3d96d2646bdf/" title="Flutter 官方学习资料及网站">
+                                        <span class="hidden-mobile">Flutter 官方学习资料及网站</span>
+                                        <span class="visible-mobile">下一篇</span>
+                                        <i class="iconfont icon-arrowright"></i>
+                                    </a>
+                                    
+                                </article>
+                            </div>
+                            
+                        </div>
+
+                        
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UPhNKJPvzZF9bYu6JkHvkPGo-gzGzoHsz","appKey":"Xkr55uYyFhlXuwAiUn2UAydx","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://uphnkjpv.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-col d-none d-lg-block col-lg-2">
+            
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
